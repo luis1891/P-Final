@@ -1,0 +1,53 @@
+#DROP DATABASE Registro;
+CREATE DATABASE Registro;
+USE Registro;
+
+CREATE TABLE Persona (
+ci INT PRIMARY KEY,
+Nom_completo VARCHAR(100) NOT NULL,
+contraseña VARCHAR(10) NOT NULL,
+ubicacion VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE proveedor(
+ci2 INT PRIMARY KEY,
+id_p INT NOT NULL,
+contacto INT NOT NULL,
+disponibilidad VARCHAR(10) NOT NULL,
+CONSTRAINT FOREIGN KEY(ci2) REFERENCES Persona (ci)
+);
+
+CREATE TABLE servicio(
+id_s VARCHAR(20) PRIMARY KEY,
+descripcion VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE hace(
+id_se VARCHAR(20) NOT NULL,
+id_pr INT NOT NULL,
+ci3 INT NOT NULL,
+precio INT NOT NULL,
+horario varchar(10) NOT NULL,
+zona VARCHAR(20) NOT NULL,
+CONSTRAINT FOREIGN KEY(id_se) REFERENCES servicio (id_s),
+CONSTRAINT FOREIGN KEY(id_pr) REFERENCES proveedor (ci2),
+CONSTRAINT FOREIGN KEY(ci3) REFERENCES Persona (ci)
+);
+
+CREATE TABLE contrata(
+ci4 INT NOT NULL,
+id_pro INT NOT NULL,
+id_ser VARCHAR(20) NOT NULL,
+fecha_c VARCHAR(20) NOT NULL,
+hora_tra VARCHAR(20) NOT NULL,
+CONSTRAINT FOREIGN KEY(ci4) REFERENCES Persona (ci)
+);
+
+CREATE TABLE horario (
+id_h VARCHAR(20) PRIMARY KEY,
+fecha_hor_in VARCHAR(10) NOT NULL,
+fecha_hor_fin VARCHAR(10) NOT NULL,
+estado VARCHAR(10) NOT NULL,
+id_prove INT NOT NULL,
+CONSTRAINT FOREIGN KEY(id_prove) REFERENCES proveedor (ci2)
+);
