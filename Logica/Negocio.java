@@ -52,17 +52,19 @@ public class Negocio {
 	
 	
 	//ingresar datos y mostrar tabla proveedor
-		public static void insertarproveedor(int CI, int idp, int contact, String disp) {
-		Proveedor proveedor = new Proveedor(CI,idp,contact,disp);
+		public static void insertarproveedor(int CI, int idp, String nombrec, String contra, int contact, String disp) {
+		Proveedor proveedor = new Proveedor(CI,idp,nombrec,contra,contact,disp);
 		proveedor.insertar();
 		}
 		
 		public static DefaultTableModel Mostrardatosproveedor(){
 			
-			String[] dato = new String[4];
+			String[] dato = new String[6];
 			DefaultTableModel model = new DefaultTableModel();
 			model.addColumn("CI");
 			model.addColumn("ID_P");
+			model.addColumn("NOMBRE COMPLETO");
+			model.addColumn("CONTRASEÑA");
 			model.addColumn("CONTACTO");
 			model.addColumn("DISPONIBILIDAD");
 			try {
@@ -72,6 +74,8 @@ public class Negocio {
 					dato[1]=rs.getString(2);
 					dato[2]=rs.getString(3);
 					dato[3]=rs.getString(4);
+					dato[4]=rs.getString(5);
+					dato[5]=rs.getString(6);
 					model.addRow(dato);
 				}
 				
