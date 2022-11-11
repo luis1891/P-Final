@@ -18,7 +18,6 @@ public class Contrata {
     private String id_ser = null , fecha_c = null, hora_tra = null;
 	private int C_I = 0, id_pro = 0;
 	
-	
 	public Contrata(int ci, int idpro, String idser, String fechac, String horatra){
 		  
 		this.C_I = ci;
@@ -28,8 +27,6 @@ public class Contrata {
 		this.hora_tra = horatra;
 	    CN = new Conexion();
 	  }
-	
-
 	
 	public int insertar() {
 		  try {
@@ -58,12 +55,9 @@ public class Contrata {
     		Statement st=CN.getConnection().prepareStatement(SQL);
     		String mos = "SELECT * FROM contrata";
     		rs=st.executeQuery(mos);
-    		
-    	}
-    	catch (Exception e){
+    	}catch (Exception e){
     		System.out.print(e);
     	}
     	return rs;
 	}
-
 }

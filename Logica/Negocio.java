@@ -28,7 +28,7 @@ public class Negocio {
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("CI");
 		model.addColumn("NOMBRE COMPLETO");
-		model.addColumn("CONTRASEÃ‘A");
+		model.addColumn("CONTRASEÑA");
 		model.addColumn("UBICACION");
 		try {
 			ResultSet rs=Persona.Mostrardatos();
