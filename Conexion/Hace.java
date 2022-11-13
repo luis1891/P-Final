@@ -14,15 +14,14 @@ public class Hace {
 	
 	private PreparedStatement ps;
 	private final Conexion CN;
-	private final String SQL = "INSERT INTO hace (id_se,id_pr,ci3,precio,horario,zona) values(?,?,?,?,?,?)";
+	private final String SQL = "INSERT INTO hace (id_se,ci3,precio,horario,zona) values(?,?,?,?,?)";
 	private String id_se = null , horario = null, zona = null;
-	private int id_pr = 0, c_i = 0, precio = 0;
+	private int c_i = 0, precio = 0;
 	
 	
-	public Hace(String idse, int idpr, int ci, int pre, String hora, String zo){
+	public Hace(String idse, int ci, int pre, String hora, String zo){
 		  
 		this.id_se = idse;
-		this.id_pr = idpr;
 		this.c_i = ci;
 		this.precio = pre;
 		this.horario = hora;
@@ -35,11 +34,10 @@ public class Hace {
 		  try {
 				ps = CN.getConnection().prepareStatement(SQL);
 				ps.setString(1, id_se);
-				ps.setInt(2, id_pr);
-				ps.setInt(3, c_i);
-				ps.setInt(4, precio);
-				ps.setString(5, horario);
-				ps.setString(6, zona);
+				ps.setInt(2, c_i);
+				ps.setInt(3, precio);
+				ps.setString(4, horario);
+				ps.setString(5, zona);
 				int r = ps.executeUpdate();
 				if (r > 0) {
 					JOptionPane.showMessageDialog(null, "Guardado correctamente");

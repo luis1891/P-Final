@@ -96,18 +96,12 @@ public class INICIO extends JFrame {
 		private JTextField txt_disp_Prov;
 		private JTextField txt_ci_Prov;
 		private JTextField txt_cont_Prov;
-		private JTextField txt_id_Prov;
 		private JTextField txt_name_Prov;
 		private JTextField txt_pass_Prov;
+		private JPasswordField txt_pass_INI_Prov;
+		private JTextField txt_INI_Prov;
 		
 	public INICIO() {
-		
-
-		/*
-		 ###########################
-		 # PANEL DE INICIO CENTRAL #
-		 ###########################
-		*/
 		getContentPane().setLayout(null);
 		JTabbedPane panel_Inicio = new JTabbedPane(JTabbedPane.TOP);
 		panel_Inicio.setBounds(0, 0, 463, 314);
@@ -146,46 +140,94 @@ public class INICIO extends JFrame {
 		
 		JLayeredPane lay_INI = new JLayeredPane();
 		panIni.addTab("Inicio de sesion", null, lay_INI, null);
-		lay_INI.setLayout(null);
 		
 		JButton btnINI_CLI = new JButton("INICIAR SESION");
+		btnINI_CLI.setBounds(120, 67, 162, 23);
 		btnINI_CLI.setBackground(Color.DARK_GRAY);
 		btnINI_CLI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnINI_CLI.setBounds(120, 67, 162, 23);
+		lay_INI.setLayout(null);
 		btnINI_CLI.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lay_INI.add(btnINI_CLI);
 		
 		pass_INI = new JPasswordField();
-		pass_INI.setBackground(Color.WHITE);
 		pass_INI.setBounds(200, 36, 145, 20);
+		pass_INI.setBackground(Color.WHITE);
 		pass_INI.setToolTipText("");
 		pass_INI.setEchoChar('#');
 		lay_INI.add(pass_INI);
 		
 		ci_INI = new JTextField();
-		ci_INI.setBackground(Color.WHITE);
 		ci_INI.setBounds(200, 11, 145, 20);
+		ci_INI.setBackground(Color.WHITE);
 		ci_INI.setColumns(10);
 		lay_INI.add(ci_INI);
 		
 		JLabel CI_INI = new JLabel("C.I");
-		CI_INI.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		CI_INI.setBounds(78, 15, 113, 14);
+		CI_INI.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		lay_INI.add(CI_INI);
 		
 		JLabel txt_pass = new JLabel("Contraseña");
-		txt_pass.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		txt_pass.setBounds(78, 39, 113, 14);
+		txt_pass.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		lay_INI.add(txt_pass);
 		
-		/*
-		 ################################
-		 # PANEL DE REGISTRO DE CLIENTE #
-		 ################################
-		*/
+		JButton btnINI_PROV = new JButton("INICIAR SESION COMO PROVEEDOR");
+		btnINI_PROV.setBounds(89, 101, 225, 23);
+		btnINI_PROV.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnINI_PROV.setBackground(Color.DARK_GRAY);
+		lay_INI.add(btnINI_PROV);
+		
+		JButton btnVolver_Cli = new JButton("Volver");
+		btnVolver_Cli.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnVolver_Cli.setBackground(Color.DARK_GRAY);
+		btnVolver_Cli.setBounds(120, 135, 162, 23);
+		lay_INI.add(btnVolver_Cli);
+		
+		JTabbedPane panIni_Prov = new JTabbedPane(JTabbedPane.TOP);
+		panel_Inicio.addTab("Inicio Prov", null, panIni_Prov, null);
+		
+		JLayeredPane lay_INI_Prov = new JLayeredPane();
+		lay_INI_Prov.setLayout(null);
+		panIni_Prov.addTab("Iniciar como proveedor", null, lay_INI_Prov, null);
+		
+		JButton btnINI_Prov = new JButton("INICIAR SESION");
+		btnINI_Prov.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnINI_Prov.setBackground(Color.DARK_GRAY);
+		btnINI_Prov.setBounds(120, 67, 162, 23);
+		lay_INI_Prov.add(btnINI_Prov);
+		
+		txt_pass_INI_Prov = new JPasswordField();
+		txt_pass_INI_Prov.setToolTipText("");
+		txt_pass_INI_Prov.setEchoChar('#');
+		txt_pass_INI_Prov.setBackground(Color.WHITE);
+		txt_pass_INI_Prov.setBounds(200, 36, 145, 20);
+		lay_INI_Prov.add(txt_pass_INI_Prov);
+		
+		txt_INI_Prov = new JTextField();
+		txt_INI_Prov.setColumns(10);
+		txt_INI_Prov.setBackground(Color.WHITE);
+		txt_INI_Prov.setBounds(200, 11, 145, 20);
+		lay_INI_Prov.add(txt_INI_Prov);
+		
+		JLabel NAME_INI_Prov = new JLabel("Nombre");
+		NAME_INI_Prov.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
+		NAME_INI_Prov.setBounds(78, 15, 113, 14);
+		lay_INI_Prov.add(NAME_INI_Prov);
+		
+		JLabel lbiContrasena = new JLabel("Contraseña");
+		lbiContrasena.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
+		lbiContrasena.setBounds(78, 39, 113, 14);
+		lay_INI_Prov.add(lbiContrasena);
+		
+		JButton btnVolver_Prov = new JButton("Volver");
+		btnVolver_Prov.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnVolver_Prov.setBackground(Color.DARK_GRAY);
+		btnVolver_Prov.setBounds(120, 101, 162, 23);
+		lay_INI_Prov.add(btnVolver_Prov);
 		JTabbedPane panRegCli = new JTabbedPane(JTabbedPane.TOP);
 		panel_Inicio.addTab("Cliente", null, panRegCli, null);
 		
@@ -263,73 +305,63 @@ public class INICIO extends JFrame {
 		paniRegProv.addTab("Registro para Proveedor", null, lay_Proveedor, null);
 		lay_Proveedor.setLayout(null);
 		
-		JLabel id_Prov = new JLabel("ID");
-		id_Prov.setBounds(78, 9, 108, 14);
-		id_Prov.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		lay_Proveedor.add(id_Prov);
-		//La concha de tu herrmana codigo puto
-		txt_id_Prov = new JTextField();
-		txt_id_Prov.setBounds(191, 5, 86, 20);
-		txt_id_Prov.setColumns(10);
-		lay_Proveedor.add(txt_id_Prov);
-		
 		JLabel nameProv = new JLabel("Nombre completo");
-		nameProv.setBounds(78, 33, 108, 14);
+		nameProv.setBounds(75, 14, 108, 14);
 		nameProv.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		lay_Proveedor.add(nameProv);
 		
 		txt_name_Prov = new JTextField();
-		txt_name_Prov.setBounds(191, 30, 176, 20);
+		txt_name_Prov.setBounds(188, 11, 176, 20);
 		txt_name_Prov.setColumns(10);
 		lay_Proveedor.add(txt_name_Prov);
 		
 		JLabel passProv = new JLabel("Contraseña");
-		passProv.setBounds(78, 58, 108, 14);
+		passProv.setBounds(75, 39, 108, 14);
 		passProv.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		lay_Proveedor.add(passProv);
 		
 		txt_pass_Prov = new JTextField();
-		txt_pass_Prov.setBounds(191, 55, 176, 20);
+		txt_pass_Prov.setBounds(188, 36, 176, 20);
 		txt_pass_Prov.setColumns(10);
 		lay_Proveedor.add(txt_pass_Prov);
 		
 		JLabel ciProv = new JLabel("C.I");
-		ciProv.setBounds(78, 83, 108, 14);
+		ciProv.setBounds(75, 64, 108, 14);
 		ciProv.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		lay_Proveedor.add(ciProv);
 		
 		txt_ci_Prov = new JTextField();
-		txt_ci_Prov.setBounds(191, 80, 176, 20);
+		txt_ci_Prov.setBounds(188, 61, 176, 20);
 		txt_ci_Prov.setColumns(10);
 		lay_Proveedor.add(txt_ci_Prov);
 		
 		JLabel contact_Prov = new JLabel("Contacto");
-		contact_Prov.setBounds(78, 108, 108, 14);
+		contact_Prov.setBounds(75, 89, 108, 14);
 		contact_Prov.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		lay_Proveedor.add(contact_Prov);
 		
 		txt_cont_Prov = new JTextField();
-		txt_cont_Prov.setBounds(191, 105, 176, 20);
+		txt_cont_Prov.setBounds(188, 86, 176, 20);
 		txt_cont_Prov.setColumns(10);
 		lay_Proveedor.add(txt_cont_Prov);
 		
 		JLabel disp_Prov = new JLabel("Disponibilidad");
-		disp_Prov.setBounds(78, 133, 108, 14);
+		disp_Prov.setBounds(75, 114, 108, 14);
 		disp_Prov.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		lay_Proveedor.add(disp_Prov);
 		
 		txt_disp_Prov = new JTextField();
-		txt_disp_Prov.setBounds(191, 130, 176, 20);
+		txt_disp_Prov.setBounds(188, 111, 176, 20);
 		txt_disp_Prov.setColumns(10);
 		lay_Proveedor.add(txt_disp_Prov);
 		
 		JButton btnAddProv = new JButton("AÑADIR PROVEEDOR");
-		btnAddProv.setBounds(149, 168, 145, 23);
+		btnAddProv.setBounds(146, 149, 145, 23);
 		btnAddProv.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lay_Proveedor.add(btnAddProv);
 		
 		JButton btnVolverProv = new JButton("VOLVER");
-		btnVolverProv.setBounds(149, 196, 145, 23);
+		btnVolverProv.setBounds(146, 177, 145, 23);
 		btnVolverProv.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lay_Proveedor.add(btnVolverProv);
 	}

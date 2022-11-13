@@ -14,14 +14,13 @@ public class Contrata {
 	
 	private PreparedStatement ps;
 	private final Conexion CN;
-    private final String SQL = "INSERT INTO contrata (ci4,id_pro,id_ser,fecha_c,hora_tra) values(?,?,?,?,?)";
+    private final String SQL = "INSERT INTO contrata (ci4,id_ser,fecha_c,hora_tra) values(?,?,?,?)";
     private String id_ser = null , fecha_c = null, hora_tra = null;
-	private int C_I = 0, id_pro = 0;
+	private int C_I = 0;
 	
-	public Contrata(int ci, int idpro, String idser, String fechac, String horatra){
+	public Contrata(int ci, String idser, String fechac, String horatra){
 		  
 		this.C_I = ci;
-		this.id_pro = idpro;
 		this.id_ser = idser;
 		this.fecha_c = fechac;
 		this.hora_tra = horatra;
@@ -32,10 +31,9 @@ public class Contrata {
 		  try {
 				ps = CN.getConnection().prepareStatement(SQL);
 				ps.setInt(1, C_I);
-				ps.setInt(2, id_pro);
-				ps.setString(3, id_ser);
-				ps.setString(4, fecha_c);
-				ps.setString(5, hora_tra);
+				ps.setString(2, id_ser);
+				ps.setString(3, fecha_c);
+				ps.setString(4, hora_tra);
 				int r = ps.executeUpdate();
 				if (r > 0) {
 					JOptionPane.showMessageDialog(null, "Guardado correctamente");
