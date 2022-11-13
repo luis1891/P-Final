@@ -45,6 +45,9 @@ public class Visual extends JFrame {
 		JButton btnCli = new JButton("REGISTRO CLIENTE");
 		btnCli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				REGISTRO_CLI registrocli = new REGISTRO_CLI();
+				registrocli.setVisible(true);
+				dispose();
 			}
 		});
 		btnCli.setBounds(43, 90, 154, 44);
@@ -54,6 +57,9 @@ public class Visual extends JFrame {
 		JButton btnINI = new JButton("INICIAR SESION");
 		btnINI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				INICIO inicio = new INICIO();
+				inicio.setVisible(true);
+				dispose();
 			}
 		});
 		btnINI.setBounds(43, 35, 154, 44);
@@ -62,6 +68,9 @@ public class Visual extends JFrame {
 		JButton btnProv = new JButton("REGISTRO PROVEEDOR");
 		btnProv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				REGISTRO_PROV registroprov = new REGISTRO_PROV();
+				registroprov.setVisible(true);
+				dispose();
 			}
 		});
 		btnProv.setBounds(43, 145, 154, 44);
