@@ -28,7 +28,7 @@ public class Negocio {
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("CI");
 		model.addColumn("NOMBRE COMPLETO");
-		model.addColumn("CONTRASEÑA");
+		model.addColumn("CONTRASEï¿½A");
 		model.addColumn("UBICACION");
 		try {
 			ResultSet rs=Persona.Mostrardatos();
@@ -52,17 +52,16 @@ public class Negocio {
 	
 	
 	//ingresar datos y mostrar tabla proveedor
-		public static void insertarproveedor(int CI, int idp, String nombrec, String contra, int contact, String disp) {
-		Proveedor proveedor = new Proveedor(CI,idp,nombrec,contra,contact,disp);
+		public static void insertarproveedor(int CI, String nombrec, String contra, int contact, String disp) {
+		Proveedor proveedor = new Proveedor(CI,nombrec,contra,contact,disp);
 		proveedor.insertar();
 		}
 		
 		public static DefaultTableModel Mostrardatosproveedor(){
 			
-			String[] dato = new String[6];
+			String[] dato = new String[5];
 			DefaultTableModel model = new DefaultTableModel();
 			model.addColumn("CI");
-			model.addColumn("ID_P");
 			model.addColumn("NOMBRE COMPLETO");
 			model.addColumn("CONTRASEÃ‘A");
 			model.addColumn("CONTACTO");
@@ -75,7 +74,6 @@ public class Negocio {
 					dato[2]=rs.getString(3);
 					dato[3]=rs.getString(4);
 					dato[4]=rs.getString(5);
-					dato[5]=rs.getString(6);
 					model.addRow(dato);
 				}
 				
@@ -122,17 +120,16 @@ public class Negocio {
 		
 
 		//ingresar datos y mostrar tabla hace
-		public static void insertarhace(String idse, int idpr, int ci, int pre, String hora, String zo) {
-		Hace hace = new Hace(idse,idpr,ci,pre,hora,zo);
+		public static void insertarhace(String idse, int ci, int pre, String hora, String zo) {
+		Hace hace = new Hace(idse,ci,pre,hora,zo);
 		hace.insertar();
 		}
 		
 		public static DefaultTableModel Mostrardatoshace(){
 			
-			String[] dato = new String[6];
+			String[] dato = new String[5];
 			DefaultTableModel model = new DefaultTableModel();
 			model.addColumn("ID_SE");
-			model.addColumn("ID_PR");
 			model.addColumn("CI");
 			model.addColumn("PRECIO");
 			model.addColumn("HORARIO");
@@ -145,7 +142,6 @@ public class Negocio {
 					dato[2]=rs.getString(3);
 					dato[3]=rs.getString(4);
 					dato[4]=rs.getString(5);
-					dato[5]=rs.getString(6);
 					model.addRow(dato);
 				}
 				
@@ -161,17 +157,16 @@ public class Negocio {
 		
 		
 		//ingresar datos y mostrar tabla contrata
-		public static void insertarcontrata(int ci, int idpro, String idser, String fechac, String horatra) {
-		Contrata contrata = new Contrata(ci,idpro,idser,fechac,horatra);
+		public static void insertarcontrata(int ci, String idser, String fechac, String horatra) {
+		Contrata contrata = new Contrata(ci,idser,fechac,horatra);
 		contrata.insertar();
 		}
 		
 		public static DefaultTableModel Mostrardatoscontrata(){
 			
-			String[] dato = new String[5];
+			String[] dato = new String[4];
 			DefaultTableModel model = new DefaultTableModel();
 			model.addColumn("CI");
-			model.addColumn("ID_PRO");
 			model.addColumn("ID_SER");
 			model.addColumn("FECHA_C");
 			model.addColumn("HORA_TRA");
@@ -182,7 +177,6 @@ public class Negocio {
 					dato[1]=rs.getString(2);
 					dato[2]=rs.getString(3);
 					dato[3]=rs.getString(4);
-					dato[4]=rs.getString(5);
 					model.addRow(dato);
 				}
 				
@@ -198,20 +192,19 @@ public class Negocio {
 		
 		
 		//ingresar datos y mostrar tabla horario
-		public static void insertarhorario(String idh, String fechahor_in, String fechahor_fin, String est, int idprove) {
-		Horario horario = new Horario(idh,fechahor_in,fechahor_fin,est,idprove);
+		public static void insertarhorario(String idh, String fechahor_in, String fechahor_fin, String est) {
+		Horario horario = new Horario(idh,fechahor_in,fechahor_fin,est);
 		horario.insertar();
 		}
 		
 		public static DefaultTableModel Mostrardatoshorario(){
 			
-			String[] dato = new String[5];
+			String[] dato = new String[4];
 			DefaultTableModel model = new DefaultTableModel();
 			model.addColumn("ID_H");
 			model.addColumn("HORA INICIO");
 			model.addColumn("HORA FIN");
 			model.addColumn("ESTADO");
-			model.addColumn("ID_PROVE");
 			try {
 				ResultSet rs=Horario.Mostrardatos();
 				while(rs.next()) {
@@ -219,7 +212,6 @@ public class Negocio {
 					dato[1]=rs.getString(2);
 					dato[2]=rs.getString(3);
 					dato[3]=rs.getString(4);
-					dato[4]=rs.getString(5);
 					model.addRow(dato);
 				}
 				
