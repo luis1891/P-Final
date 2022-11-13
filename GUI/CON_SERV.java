@@ -84,7 +84,7 @@ public class CON_SERV extends JFrame {
 		*/
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Servicio 1", "Servicio 2", "Servicio 3", "Servicio 4"}));
-		comboBox.setSelectedIndex(-5);
+		//comboBox.setSelectedIndex(-5); esta linea comente
 		comboBox.setBounds(10, 11, 80, 22);
 		layConService.add(comboBox);
 		
