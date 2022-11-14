@@ -121,6 +121,7 @@ public class INICIO extends JFrame {
 		tabbedPane.addTab("Opciones", null, lay_Opciones, null);
 		
 		JButton btn_OP_INI = new JButton("INICIAR SESION");
+		btn_OP_INI.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btn_OP_INI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Inicio.setSelectedIndex(1);
@@ -130,6 +131,7 @@ public class INICIO extends JFrame {
 		lay_Opciones.add(btn_OP_INI);
 		
 		JButton btn_OP_Cli = new JButton("REGISTRO CLIENTE");
+		btn_OP_Cli.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btn_OP_Cli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Inicio.setSelectedIndex(3);
@@ -139,6 +141,7 @@ public class INICIO extends JFrame {
 		lay_Opciones.add(btn_OP_Cli);
 		
 		JButton btn_OP_Prov = new JButton("REGISTRO PROVEEDOR");
+		btn_OP_Prov.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btn_OP_Prov.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Inicio.setSelectedIndex(4);
@@ -159,8 +162,8 @@ public class INICIO extends JFrame {
 		panIni.addTab("Inicio de sesion", null, lay_INI, null);
 		
 		JButton btnINI_CLI = new JButton("INICIAR SESION");
-		btnINI_CLI.setForeground(Color.LIGHT_GRAY);
-		btnINI_CLI.setBounds(120, 67, 162, 23);
+		btnINI_CLI.setForeground(new Color(0, 0, 0));
+		btnINI_CLI.setBounds(119, 74, 162, 23);
 		btnINI_CLI.setBackground(Color.DARK_GRAY);
 		btnINI_CLI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -205,19 +208,19 @@ public class INICIO extends JFrame {
 		lay_INI.add(txt_pass);
 		
 		JButton btnINI_PROV = new JButton("INICIAR SESION COMO PROVEEDOR");
-		btnINI_PROV.setForeground(Color.LIGHT_GRAY);
+		btnINI_PROV.setForeground(new Color(0, 0, 0));
 		btnINI_PROV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Inicio.setSelectedIndex(2);
 			}
 		});
-		btnINI_PROV.setBounds(89, 101, 225, 23);
+		btnINI_PROV.setBounds(88, 108, 225, 23);
 		btnINI_PROV.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnINI_PROV.setBackground(Color.DARK_GRAY);
 		lay_INI.add(btnINI_PROV);
 		
 		JButton btnVolver_Cli = new JButton("Volver");
-		btnVolver_Cli.setForeground(Color.LIGHT_GRAY);
+		btnVolver_Cli.setForeground(new Color(0, 0, 0));
 		btnVolver_Cli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Inicio.setSelectedIndex(0);
@@ -225,7 +228,7 @@ public class INICIO extends JFrame {
 		});
 		btnVolver_Cli.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnVolver_Cli.setBackground(Color.DARK_GRAY);
-		btnVolver_Cli.setBounds(120, 135, 162, 23);
+		btnVolver_Cli.setBounds(119, 142, 162, 23);
 		lay_INI.add(btnVolver_Cli);
 		
 		JTabbedPane panIni_Prov = new JTabbedPane(JTabbedPane.TOP);
@@ -254,7 +257,7 @@ public class INICIO extends JFrame {
 				}
 			}
 		});
-		btnINI_Prov.setForeground(Color.LIGHT_GRAY);
+		btnINI_Prov.setForeground(new Color(0, 0, 0));
 		btnINI_Prov.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnINI_Prov.setBackground(Color.DARK_GRAY);
 		btnINI_Prov.setBounds(120, 67, 162, 23);
@@ -284,7 +287,7 @@ public class INICIO extends JFrame {
 		lay_INI_Prov.add(lbiContrasena);
 		
 		JButton btnVolver_Prov = new JButton("Volver");
-		btnVolver_Prov.setForeground(Color.LIGHT_GRAY);
+		btnVolver_Prov.setForeground(new Color(0, 0, 0));
 		btnVolver_Prov.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Inicio.setSelectedIndex(0);
@@ -457,6 +460,7 @@ public class INICIO extends JFrame {
 		lay_Proveedor.add(txt_disp_Prov);
 		
 		JButton btnAddProv = new JButton("AÑADIR PROVEEDOR");
+		btnAddProv.setBounds(146, 149, 145, 23);
 		btnAddProv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -496,17 +500,16 @@ public class INICIO extends JFrame {
 					}
 			}
 		});
-		btnAddProv.setBounds(146, 149, 145, 23);
 		btnAddProv.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lay_Proveedor.add(btnAddProv);
 		
 		JButton btnVolverProv = new JButton("VOLVER");
+		btnVolverProv.setBounds(146, 177, 145, 23);
 		btnVolverProv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Inicio.setSelectedIndex(0);
 			}
 		});
-		btnVolverProv.setBounds(146, 177, 145, 23);
 		btnVolverProv.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lay_Proveedor.add(btnVolverProv);
 	}

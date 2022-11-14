@@ -9,7 +9,7 @@ contraseña VARCHAR(10) NOT NULL,
 ubicacion VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE proveedor(
+CREATE TABLE proveedor (
 ci2 INT NOT NULL PRIMARY KEY REFERENCES persona (ci),
 nombre_c VARCHAR(40) NOT NULL,
 contraseña_p VARCHAR(10) NOT NULL,
@@ -17,12 +17,12 @@ contacto INT NOT NULL,
 disponibilidad VARCHAR(10) NOT NULL
 );
 
-CREATE TABLE servicio(
+CREATE TABLE servicio (
 id_s VARCHAR(20) PRIMARY KEY,
 descripcion VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE hace(
+CREATE TABLE hace (
 id_se VARCHAR(20) NOT NULL,
 ci3 INT NOT NULL,
 precio INT NOT NULL,
@@ -33,7 +33,7 @@ CONSTRAINT FOREIGN KEY(id_se) REFERENCES servicio (id_s),
 CONSTRAINT FOREIGN KEY(ci3) REFERENCES Persona (ci)
 );
 
-CREATE TABLE contrata(
+CREATE TABLE contrata (
 ci4 INT NOT NULL,
 id_ser VARCHAR(20) NOT NULL,
 fecha_c VARCHAR(20) NOT NULL,
