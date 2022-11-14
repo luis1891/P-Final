@@ -24,21 +24,19 @@ descripcion VARCHAR(100) NOT NULL
 
 CREATE TABLE hace (
 id_se VARCHAR(20) NOT NULL,
-ci3 INT NOT NULL,
+ci3 INT NOT NULL primary key,
 precio INT NOT NULL,
 horario VARCHAR(20) NOT NULL,
 zona VARCHAR(20) NOT NULL,
-primary key (id_se, ci3),
 CONSTRAINT FOREIGN KEY(id_se) REFERENCES servicio (id_s),
 CONSTRAINT FOREIGN KEY(ci3) REFERENCES Persona (ci)
 );
 
 CREATE TABLE contrata (
-ci4 INT NOT NULL,
+ci4 INT NOT NULL primary key,
 id_ser VARCHAR(20) NOT NULL,
 fecha_c VARCHAR(20) NOT NULL,
 hora_tra VARCHAR(20) NOT NULL,
-primary key(ci4, id_ser),
 CONSTRAINT FOREIGN KEY(ci4) REFERENCES Persona (ci),
 CONSTRAINT FOREIGN KEY(id_ser) REFERENCES servicio (id_s)
 );

@@ -5,13 +5,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Logica.Negocio;
+
 import javax.swing.JToolBar;
 import javax.swing.JTextArea;
 import javax.swing.JSeparator;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JTextPane;
@@ -21,17 +28,19 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
-public class SERVICIO extends JFrame {
+public class SERVICIO extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField txt_id_Service;
 	private JTextField txt_name_Serv;
 	private JTextField txt_Hora_Serv;
-	private JTextField txt_desc_Serv;
 	private JTextField txt_price_Serv;
 	private JTextField txt_loc_Serv;
 	private JTextField txt_ci_Serv;
+	private JComboBox escojerServicio;
 
 	/**
 	 * Launch the application.
@@ -54,7 +63,7 @@ public class SERVICIO extends JFrame {
 	 */
 	public SERVICIO() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 435, 504);
+		setBounds(100, 100, 435, 399);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -75,21 +84,39 @@ public class SERVICIO extends JFrame {
 		layeredPane.add(idService);
 		
 		txt_id_Service = new JTextField();
+		txt_id_Service.setText("1");
 		txt_id_Service.setBounds(20, 75, 72, 20);
 		txt_id_Service.setColumns(10);
 		txt_id_Service.setBackground(new Color(255, 255, 255));
 		layeredPane.add(txt_id_Service);
 		
-		JLabel CI_INI_1 = new JLabel("Descricion de servicio:");
-		CI_INI_1.setBounds(20, 244, 145, 14);
-		CI_INI_1.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		layeredPane.add(CI_INI_1);
-		
-		JComboBox escojerServicio = new JComboBox();
+		escojerServicio = new JComboBox();
+		escojerServicio.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				String opcion = (String)escojerServicio.getSelectedItem();
+				if(opcion.equals("Servicio 1")) {
+					txt_id_Service.setText("1");
+					txt_name_Serv.setText("Prueba");
+				}
+				else if(opcion.equals("Servicio 2")) {
+					txt_id_Service.setText("2");
+					txt_name_Serv.setText("Prueba2");
+				}
+				else if(opcion.equals("Servicio 3")) {
+					txt_id_Service.setText("3");
+					txt_name_Serv.setText("Prueba3");
+				}
+				else if(opcion.equals("Servicio 4")) {
+					txt_id_Service.setText("4");
+					txt_name_Serv.setText("Prueba4");
+				}
+			}
+		});
 		escojerServicio.setMaximumRowCount(4);
 		escojerServicio.setModel(new DefaultComboBoxModel(new String[] {"Servicio 1", "Servicio 2", "Servicio 3", "Servicio 4"}));
 		escojerServicio.setBounds(20, 20, 72, 22);
 		layeredPane.add(escojerServicio);
+			
 		
 		JLabel lblNombreDelServicio = new JLabel("Nombre del servicio");
 		lblNombreDelServicio.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
@@ -97,6 +124,7 @@ public class SERVICIO extends JFrame {
 		layeredPane.add(lblNombreDelServicio);
 		
 		txt_name_Serv = new JTextField();
+		txt_name_Serv.setText("Prueba");
 		txt_name_Serv.setBounds(20, 123, 185, 20);
 		layeredPane.add(txt_name_Serv);
 		txt_name_Serv.setColumns(10);
@@ -113,28 +141,66 @@ public class SERVICIO extends JFrame {
 		layeredPane.add(txt_Hora_Serv);
 		
 		JButton btn_pub_Serv = new JButton("Publicar");
+		btn_pub_Serv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if(txt_id_Service.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else if(txt_ci_Serv.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else if(txt_name_Serv.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else if(txt_Hora_Serv.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else if(txt_price_Serv.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else if(txt_loc_Serv.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else {
+				String idse = txt_id_Service.getText();
+				int C_I = Integer.parseInt(txt_ci_Serv.getText());
+				int pre = Integer.parseInt(txt_price_Serv.getText());
+				String hora = txt_Hora_Serv.getText();
+				String zo = txt_loc_Serv.getText();
+				
+				Negocio.insertarhace(idse, C_I, pre, hora, zo);
+				
+				txt_ci_Serv.setText(null);
+				txt_price_Serv.setText(null);
+				txt_Hora_Serv.setText(null);
+				txt_loc_Serv.setText(null);
+				
+			}
+				}
+					catch (Exception ex) {
+						JOptionPane.showMessageDialog(null,"Ingrese bien los datos" );
+					}
+			}
+		});
 		btn_pub_Serv.setForeground(Color.BLACK);
 		btn_pub_Serv.setBackground(Color.DARK_GRAY);
 		btn_pub_Serv.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btn_pub_Serv.setBounds(20, 372, 113, 31);
+		btn_pub_Serv.setBounds(20, 262, 113, 31);
 		layeredPane.add(btn_pub_Serv);
 		
-		JButton btn_del_Serv = new JButton("Borrar");
-		btn_del_Serv.setBackground(Color.DARK_GRAY);
-		btn_del_Serv.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btn_del_Serv.setBounds(256, 372, 113, 31);
-		layeredPane.add(btn_del_Serv);
-		
 		JButton btn_volver = new JButton("Volver");
+		btn_volver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				INICIO inicio = new INICIO();
+				inicio.setVisible(true);
+				dispose();
+			}
+		});
 		btn_volver.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btn_volver.setBackground(Color.DARK_GRAY);
-		btn_volver.setBounds(138, 372, 113, 31);
+		btn_volver.setBounds(203, 262, 113, 31);
 		layeredPane.add(btn_volver);
-		
-		txt_desc_Serv = new JTextField();
-		txt_desc_Serv.setBounds(20, 265, 305, 68);
-		layeredPane.add(txt_desc_Serv);
-		txt_desc_Serv.setColumns(10);
 		
 		JLabel preServ = new JLabel("Precio");
 		preServ.setHorizontalAlignment(SwingConstants.CENTER);
@@ -150,7 +216,7 @@ public class SERVICIO extends JFrame {
 		
 		JLabel lblLocalidad = new JLabel("Localidad");
 		lblLocalidad.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		lblLocalidad.setBounds(20, 196, 61, 14);
+		lblLocalidad.setBounds(20, 196, 113, 14);
 		layeredPane.add(lblLocalidad);
 		
 		txt_loc_Serv = new JTextField();
@@ -158,9 +224,9 @@ public class SERVICIO extends JFrame {
 		txt_loc_Serv.setBounds(20, 213, 185, 20);
 		layeredPane.add(txt_loc_Serv);
 		
-		JLabel ciService = new JLabel("Servicio C.I");
+		JLabel ciService = new JLabel("C.I Proveedor");
 		ciService.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		ciService.setBounds(157, 58, 72, 14);
+		ciService.setBounds(128, 58, 101, 14);
 		layeredPane.add(ciService);
 		
 		txt_ci_Serv = new JTextField();
@@ -170,4 +236,3 @@ public class SERVICIO extends JFrame {
 		layeredPane.add(txt_ci_Serv);
 	}
 }
-

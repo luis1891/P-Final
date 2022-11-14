@@ -49,7 +49,7 @@ public class CON_SERV extends JFrame {
 	 */
 	public CON_SERV() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 686, 406);
+		setBounds(100, 100, 686, 410);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -102,7 +102,7 @@ public class CON_SERV extends JFrame {
 		layConService.add(lblNewLabel);
 		
 		JLabel lblcontactProveedor = new JLabel("Numero de Contacto");
-		lblcontactProveedor.setBounds(10, 77, 122, 14);
+		lblcontactProveedor.setBounds(10, 77, 155, 14);
 		lblcontactProveedor.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		layConService.add(lblcontactProveedor);
 		
@@ -147,7 +147,7 @@ public class CON_SERV extends JFrame {
 		layConService.add(txt_IdServicio);
 		
 		JLabel lblDescripcionDelServicio = new JLabel("Descripcion del servicio");
-		lblDescripcionDelServicio.setBounds(249, 76, 143, 14);
+		lblDescripcionDelServicio.setBounds(249, 76, 189, 14);
 		lblDescripcionDelServicio.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		layConService.add(lblDescripcionDelServicio);
 		
@@ -165,4 +165,3 @@ public class CON_SERV extends JFrame {
 		
 	}
 }
-
