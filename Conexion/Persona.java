@@ -16,9 +16,10 @@ public class Persona {
 	  private PreparedStatement ps;
 	  private final Conexion CN;
 	  private final String SQL = "INSERT INTO Persona (ci,Nom_completo,contraseña,ubicacion) values(?,?,?,?)";
-	  private String contra = null , ubicacion = null, nombre = null;
-	  private int C_I = 0;
-	  
+	  private static String contra = null;
+	private String ubicacion = null;
+	private String nombre = null;
+	  private static int C_I = 0;
 
 	  public Persona(String nom, int ci, String clave, String ubi){
 		  
@@ -59,6 +60,26 @@ public class Persona {
     		
     	}
     	catch (Exception e){
+    		System.out.print(e);
+    	}
+    	return rs;
+	}
+	
+	
+	public static ResultSet Login() {
+    	ResultSet rs =null;
+    	
+    	try {	
+    		Conexion CN = new Conexion();
+    		String SQL="";
+    		Statement st=CN.getConnection().prepareStatement(SQL);
+    		String mos = "SELECT * FROM Persona WHERE ci='"+C_I+"' and contraseña='"+contra+"'";
+    		System.out.print(mos);
+    		rs=st.executeQuery(mos);
+    		
+    	}
+    	catch (Exception e){
+    		
     		System.out.print(e);
     	}
     	return rs;

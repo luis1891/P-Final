@@ -102,8 +102,10 @@ public class INICIO extends JFrame {
 		private JTextField txt_INI_Prov;
 		
 	public INICIO() {
+		setBounds(100, 100, 480, 355);
 		getContentPane().setLayout(null);
 		JTabbedPane panel_Inicio = new JTabbedPane(JTabbedPane.TOP);
+		panel_Inicio.setEnabled(false);
 		panel_Inicio.setBounds(0, 0, 463, 314);
 		getContentPane().add(panel_Inicio);
 		
@@ -119,14 +121,29 @@ public class INICIO extends JFrame {
 		tabbedPane.addTab("Opciones", null, lay_Opciones, null);
 		
 		JButton btn_OP_INI = new JButton("INICIAR SESION");
+		btn_OP_INI.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_Inicio.setSelectedIndex(1);
+			}
+		});
 		btn_OP_INI.setBounds(152, 27, 154, 44);
 		lay_Opciones.add(btn_OP_INI);
 		
 		JButton btn_OP_Cli = new JButton("REGISTRO CLIENTE");
+		btn_OP_Cli.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_Inicio.setSelectedIndex(3);
+			}
+		});
 		btn_OP_Cli.setBounds(152, 82, 154, 44);
 		lay_Opciones.add(btn_OP_Cli);
 		
 		JButton btn_OP_Prov = new JButton("REGISTRO PROVEEDOR");
+		btn_OP_Prov.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_Inicio.setSelectedIndex(4);
+			}
+		});
 		btn_OP_Prov.setBounds(152, 137, 154, 44);
 		lay_Opciones.add(btn_OP_Prov);
 		
@@ -142,10 +159,22 @@ public class INICIO extends JFrame {
 		panIni.addTab("Inicio de sesion", null, lay_INI, null);
 		
 		JButton btnINI_CLI = new JButton("INICIAR SESION");
+		btnINI_CLI.setForeground(Color.LIGHT_GRAY);
 		btnINI_CLI.setBounds(120, 67, 162, 23);
 		btnINI_CLI.setBackground(Color.DARK_GRAY);
 		btnINI_CLI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int C_I = Integer.parseInt(ci_INI.getText());
+				String clave =String.valueOf(pass_INI.getPassword());
+				String nombre_C=null;
+				String ubicacion=null;
+				Negocio.logincli(nombre_C, C_I, clave, ubicacion);
+				boolean lc = Negocio.logincliente();
+				if(lc == true) {
+					CON_SERV serpro = new CON_SERV();
+					serpro.setVisible(true);
+					dispose();
+				}
 			}
 		});
 		lay_INI.setLayout(null);
@@ -176,12 +205,24 @@ public class INICIO extends JFrame {
 		lay_INI.add(txt_pass);
 		
 		JButton btnINI_PROV = new JButton("INICIAR SESION COMO PROVEEDOR");
+		btnINI_PROV.setForeground(Color.LIGHT_GRAY);
+		btnINI_PROV.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_Inicio.setSelectedIndex(2);
+			}
+		});
 		btnINI_PROV.setBounds(89, 101, 225, 23);
 		btnINI_PROV.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnINI_PROV.setBackground(Color.DARK_GRAY);
 		lay_INI.add(btnINI_PROV);
 		
 		JButton btnVolver_Cli = new JButton("Volver");
+		btnVolver_Cli.setForeground(Color.LIGHT_GRAY);
+		btnVolver_Cli.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_Inicio.setSelectedIndex(0);
+			}
+		});
 		btnVolver_Cli.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnVolver_Cli.setBackground(Color.DARK_GRAY);
 		btnVolver_Cli.setBounds(120, 135, 162, 23);
@@ -195,6 +236,25 @@ public class INICIO extends JFrame {
 		panIni_Prov.addTab("Iniciar como proveedor", null, lay_INI_Prov, null);
 		
 		JButton btnINI_Prov = new JButton("INICIAR SESION");
+		btnINI_Prov.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int C_I = Integer.parseInt(txt_INI_Prov.getText());
+				String clave =String.valueOf(txt_pass_INI_Prov.getPassword());
+				String nombre_C=null;
+				String ubicacion=null;
+				String nombrec=null;
+				int contact=0;
+				String disp=null;
+				Negocio.loginpro(C_I, nombrec, clave, contact, disp);
+				boolean lc = Negocio.loginproveedor();
+				if(lc == true) {
+					SERVICIO servicio = new SERVICIO();
+					servicio.setVisible(true);
+					dispose();
+				}
+			}
+		});
+		btnINI_Prov.setForeground(Color.LIGHT_GRAY);
 		btnINI_Prov.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnINI_Prov.setBackground(Color.DARK_GRAY);
 		btnINI_Prov.setBounds(120, 67, 162, 23);
@@ -213,10 +273,10 @@ public class INICIO extends JFrame {
 		txt_INI_Prov.setBounds(200, 11, 145, 20);
 		lay_INI_Prov.add(txt_INI_Prov);
 		
-		JLabel NAME_INI_Prov = new JLabel("Nombre");
-		NAME_INI_Prov.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		NAME_INI_Prov.setBounds(78, 15, 113, 14);
-		lay_INI_Prov.add(NAME_INI_Prov);
+		JLabel CI_INI_Prov = new JLabel("C.I");
+		CI_INI_Prov.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
+		CI_INI_Prov.setBounds(78, 15, 113, 14);
+		lay_INI_Prov.add(CI_INI_Prov);
 		
 		JLabel lbiContrasena = new JLabel("Contraseña");
 		lbiContrasena.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
@@ -224,6 +284,12 @@ public class INICIO extends JFrame {
 		lay_INI_Prov.add(lbiContrasena);
 		
 		JButton btnVolver_Prov = new JButton("Volver");
+		btnVolver_Prov.setForeground(Color.LIGHT_GRAY);
+		btnVolver_Prov.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_Inicio.setSelectedIndex(0);
+			}
+		});
 		btnVolver_Prov.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnVolver_Prov.setBackground(Color.DARK_GRAY);
 		btnVolver_Prov.setBounds(120, 101, 162, 23);
@@ -277,6 +343,36 @@ public class INICIO extends JFrame {
 		JButton btnAddCLI = new JButton("AÑADIR CLIENTE");
 		btnAddCLI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					if(txt_name_Regi_CLI.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else if(txt_pass_Regi_CLI.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else if(txt_ci_Regi_CLi.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else if(txt_ubi_Regi_CLI.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else {
+				String nombre_C = txt_name_Regi_CLI.getText();
+				String clave = txt_pass_Regi_CLI.getText();
+				int C_I = Integer.parseInt(txt_ci_Regi_CLi.getText());
+				String ubicacion = txt_ubi_Regi_CLI.getText();
+				
+				Negocio.insertarpersona(nombre_C, C_I, clave, ubicacion);
+				
+				txt_name_Regi_CLI.setText(null);
+				txt_pass_Regi_CLI.setText(null);
+				txt_ci_Regi_CLi.setText(null);
+				txt_ubi_Regi_CLI.setText(null);
+			}
+				}
+					catch (Exception ex) {
+						JOptionPane.showMessageDialog(null,"Ingrese bien los datos" );
+					}
 			}
 		});
 		btnAddCLI.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -284,6 +380,11 @@ public class INICIO extends JFrame {
 		layRegiCLI.add(btnAddCLI);
 		
 		JButton btnVolverCli = new JButton("VOLVER");
+		btnVolverCli.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_Inicio.setSelectedIndex(0);
+			}
+		});
 		btnVolverCli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -356,11 +457,55 @@ public class INICIO extends JFrame {
 		lay_Proveedor.add(txt_disp_Prov);
 		
 		JButton btnAddProv = new JButton("AÑADIR PROVEEDOR");
+		btnAddProv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if(txt_name_Prov.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else if(txt_pass_Prov.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else if(txt_ci_Prov.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else if(txt_cont_Prov.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else if(txt_disp_Prov.getText().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
+					}
+					else {
+				String nombre_C = txt_name_Prov.getText();
+				String clave = txt_pass_Prov.getText();
+				int C_I = Integer.parseInt(txt_ci_Prov.getText());
+				int contacto = Integer.parseInt(txt_cont_Prov.getText());
+				String disponibilidad = txt_disp_Prov.getText();
+				
+				Negocio.insertarproveedor(C_I, nombre_C, clave, contacto, disponibilidad);
+				
+				txt_name_Prov.setText(null);
+				txt_pass_Prov.setText(null);
+				txt_ci_Prov.setText(null);
+				txt_cont_Prov.setText(null);
+				txt_disp_Prov.setText(null);
+			}
+				}
+					catch (Exception ex) {
+						JOptionPane.showMessageDialog(null,"Ingrese bien los datos" );
+					}
+			}
+		});
 		btnAddProv.setBounds(146, 149, 145, 23);
 		btnAddProv.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lay_Proveedor.add(btnAddProv);
 		
 		JButton btnVolverProv = new JButton("VOLVER");
+		btnVolverProv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_Inicio.setSelectedIndex(0);
+			}
+		});
 		btnVolverProv.setBounds(146, 177, 145, 23);
 		btnVolverProv.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lay_Proveedor.add(btnVolverProv);

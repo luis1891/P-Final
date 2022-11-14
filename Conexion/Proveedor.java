@@ -15,8 +15,10 @@ public class Proveedor {
 	private PreparedStatement ps;
 	private final Conexion CN;
 	private final String SQL = "INSERT INTO proveedor (ci2,nombre_c,contraseña_p,contacto,disponibilidad) values(?,?,?,?,?)";
-	private String disponibilidad = null, nombre_C = null, contra = null; 
-	private int C_I = 0, contacto = 0;
+	private String disponibilidad = null, nombre_C = null;
+	private static String contra = null; 
+	private static int C_I = 0;
+	private int contacto = 0;
 	
 	public Proveedor(int CI, String nombrec, String clave, int contact, String disp){
 		  
@@ -58,6 +60,25 @@ public class Proveedor {
     		
     	}
     	catch (Exception e){
+    		System.out.print(e);
+    	}
+    	return rs;
+	}
+	
+	public static ResultSet Login() {
+    	ResultSet rs =null;
+    	
+    	try {	
+    		Conexion CN = new Conexion();
+    		String SQL="";
+    		Statement st=CN.getConnection().prepareStatement(SQL);
+    		String mos = "SELECT * FROM proveedor WHERE ci2='"+C_I+"' and contraseña_p='"+contra+"'";
+    		System.out.print(mos);
+    		rs=st.executeQuery(mos);
+    		
+    	}
+    	catch (Exception e){
+    		
     		System.out.print(e);
     	}
     	return rs;

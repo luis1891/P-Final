@@ -3,6 +3,7 @@ package Logica;
 
 import java.sql.ResultSet;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import Conexion.Contrata;
@@ -48,6 +49,31 @@ public class Negocio {
 		return model;
 		
 	}
+	
+	public static void logincli(String nom, int ci, String clave, String ubi){
+		
+		Persona persona = new Persona(nom,ci,clave,ubi);
+	}
+	
+	public static boolean logincliente(){
+		boolean lc = false;
+		try {
+			ResultSet rs=Persona.Login();
+			if(rs.next()) {
+				lc = true;
+			}else {
+				JOptionPane.showMessageDialog(null,"EL USUARIO NO EXISTE");
+			}
+			
+		}
+		catch (Exception e){
+			System.out.print(e);
+		}
+		return lc;
+		
+	}
+	
+	
 	//fin tabla persona
 	
 	
@@ -83,6 +109,29 @@ public class Negocio {
 			}
 			
 			return model;
+			
+		}
+		
+		public static void loginpro(int CI, String nombrec, String contra, int contact, String disp){
+			
+			Proveedor proveedor = new Proveedor(CI,nombrec,contra,contact,disp);
+		}
+		
+		public static boolean loginproveedor(){
+			boolean lc = false;
+			try {
+				ResultSet rs=Proveedor.Login();
+				if(rs.next()) {
+					lc = true;
+				}else {
+					JOptionPane.showMessageDialog(null,"EL USUARIO NO EXISTE");
+				}
+				
+			}
+			catch (Exception e){
+				System.out.print(e);
+			}
+			return lc;
 			
 		}
 		//fin tabla proveedor
