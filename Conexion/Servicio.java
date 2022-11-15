@@ -55,5 +55,72 @@ public class Servicio {
 	    	}
 	    	return rs;
 		}
+	  
+	  public static ResultSet Mostrardescripcion1() {
+	    	ResultSet rs =null;
+	    	
+	    	try {	
+	    		Conexion CN = new Conexion();
+	    		String SQL="";
+	    		Statement st=CN.getConnection().prepareStatement(SQL);
+	    		String mos = "SELECT * FROM servicio WHERE id_s = '1'";
+	    		rs=st.executeQuery(mos);
+	    		
+	    	}
+	    	catch (Exception e){
+	    		System.out.print(e);
+	    	}
+	    	return rs;
+		}
+	  
+	  public static ResultSet Mostrardescripcion2() {
+	    	ResultSet rs =null;
+	    	
+	    	try {	
+	    		Conexion CN = new Conexion();
+	    		String SQL="";
+	    		Statement st=CN.getConnection().prepareStatement(SQL);
+	    		String mos = "SELECT * FROM servicio WHERE id_s = '2'";
+	    		rs=st.executeQuery(mos);
+	    		
+	    	}
+	    	catch (Exception e){
+	    		System.out.print(e);
+	    	}
+	    	return rs;
+		}
+	  
+	  public static ResultSet Mostrardescripcion3() {
+	    	ResultSet rs =null;
+	    	
+	    	try {	
+	    		Conexion CN = new Conexion();
+	    		String SQL="";
+	    		Statement st=CN.getConnection().prepareStatement(SQL);
+	    		String mos = "SELECT * FROM servicio WHERE id_s = '3'";
+	    		rs=st.executeQuery(mos);
+	    		
+	    	}
+	    	catch (Exception e){
+	    		System.out.print(e);
+	    	}
+	    	return rs;
+		}
 	
+	  public static ResultSet Mostrardescripcion4() {
+	    	ResultSet rs =null;
+	    	
+	    	try {	
+	    		Conexion CN = new Conexion();
+	    		String SQL="";
+	    		Statement st=CN.getConnection().prepareStatement(SQL);
+	    		String mos = "SELECT * FROM servicio WHERE id_s = '4'";
+	    		rs=st.executeQuery(mos);
+	    		
+	    	}
+	    	catch (Exception e){
+	    		System.out.print(e);
+	    	}
+	    	return rs;
+		}
 }

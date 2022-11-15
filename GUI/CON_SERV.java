@@ -4,6 +4,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import Logica.Negocio;
+
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
@@ -11,6 +15,7 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JTabbedPane;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
@@ -18,15 +23,28 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextPane;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JScrollBar;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import java.awt.event.ItemListener;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.awt.event.ItemEvent;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.SpinnerDateModel;
+import java.util.Date;
+import java.util.Calendar;
 
 public class CON_SERV extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txt_Name_Serv;
-	private JTextField txt_con_Serv;
-	private JTextField txt_Ci_Serv;
-	private JTextField txt_Disp_Serv;
-	private JTextField txt_IdServicio;
+	private JTable table;
+	private JScrollPane scrollPane;
+	private JTable table_1;
+	private JTextPane textcicn;
 
 	/**
 	 * Launch the application.
@@ -48,6 +66,10 @@ public class CON_SERV extends JFrame {
 	 * Create the frame.
 	 */
 	public CON_SERV() {
+		Calendar calendar = Calendar.getInstance();
+		int horap = calendar.get(Calendar.HOUR_OF_DAY);
+		int minutop = calendar.get(Calendar.MINUTE);
+		int segundop = calendar.get(Calendar.MINUTE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 686, 410);
 		contentPane = new JPanel();
@@ -64,13 +86,6 @@ public class CON_SERV extends JFrame {
 		tabbedPane.addTab("Opcion de servicios", null, layConService, null);
 		layConService.setLayout(null);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(224, 0, 15, 312);
-		layConService.setLayer(separator, 10);
-		layConService.add(separator);
-		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBackground(Color.LIGHT_GRAY);
-		
 		/*
 		 ###############################################################
 		 #   														   #
@@ -83,85 +98,123 @@ public class CON_SERV extends JFrame {
 		 ###############################################################
 		*/
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Servicio 1", "Servicio 2", "Servicio 3", "Servicio 4"}));
-		//comboBox.setSelectedIndex(-5); esta linea comente
-		comboBox.setBounds(10, 11, 80, 22);
+		comboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				String opcion = (String)comboBox.getSelectedItem();
+				if(opcion.equals("Servicio 1")) {
+					DefaultTableModel model = Negocio.Mostrardatoshace1();
+					table.setModel(model);
+					DefaultTableModel modeldesc = Negocio.Mostrardatosdesc1();
+					table_1.setModel(modeldesc);
+				}
+				else if(opcion.equals("Servicio 2")) {
+					DefaultTableModel model = Negocio.Mostrardatoshace2();
+					table.setModel(model);
+					DefaultTableModel modeldesc = Negocio.Mostrardatosdesc2();
+					table_1.setModel(modeldesc);
+				}
+				else if(opcion.equals("Servicio 3")) {
+					DefaultTableModel model = Negocio.Mostrardatoshace3();
+					table.setModel(model);
+					DefaultTableModel modeldesc = Negocio.Mostrardatosdesc3();
+					table_1.setModel(modeldesc);
+				}
+				else if(opcion.equals("Servicio 4")) {
+					DefaultTableModel model = Negocio.Mostrardatoshace4();
+					table.setModel(model);
+					DefaultTableModel modeldesc = Negocio.Mostrardatosdesc4();
+					table_1.setModel(modeldesc);
+				}
+			}
+		});
+		comboBox.setBounds(10, 11, 105, 22);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Servicio 1", "Servicio 2", "Servicio 3", "Servicio 4"}));
 		layConService.add(comboBox);
 		
-		//##################
-		
-		txt_Name_Serv = new JTextField();
-		txt_Name_Serv.setBounds(10, 152, 155, 20);
-		layConService.add(txt_Name_Serv);
-		txt_Name_Serv.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("Datos sobre el Proveedor:");
-		lblNewLabel.setBounds(10, 44, 189, 22);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		layConService.add(lblNewLabel);
-		
-		JLabel lblcontactProveedor = new JLabel("Numero de Contacto");
-		lblcontactProveedor.setBounds(10, 77, 155, 14);
-		lblcontactProveedor.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		layConService.add(lblcontactProveedor);
-		
-		JLabel lblNombreDeProvedor = new JLabel("Nombre de Provedor");
-		lblNombreDeProvedor.setBounds(10, 133, 143, 14);
-		lblNombreDeProvedor.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		layConService.add(lblNombreDeProvedor);
-		
-		JLabel lblCiProvedor = new JLabel("C.I Proveedor");
-		lblCiProvedor.setBounds(10, 183, 113, 14);
-		lblCiProvedor.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		layConService.add(lblCiProvedor);
-		
-		JLabel lblDisponibilidadDeProvedor = new JLabel("Disponibilidad de Provedor");
-		lblDisponibilidadDeProvedor.setBounds(10, 232, 173, 14);
-		lblDisponibilidadDeProvedor.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		layConService.add(lblDisponibilidadDeProvedor);
-		
-		txt_con_Serv = new JTextField();
-		txt_con_Serv.setBounds(10, 95, 155, 20);
-		txt_con_Serv.setColumns(10);
-		layConService.add(txt_con_Serv);
-		
-		txt_Ci_Serv = new JTextField();
-		txt_Ci_Serv.setBounds(10, 201, 122, 20);
-		txt_Ci_Serv.setColumns(10);
-		layConService.add(txt_Ci_Serv);
-		
-		txt_Disp_Serv = new JTextField();
-		txt_Disp_Serv.setBounds(10, 251, 204, 33);
-		txt_Disp_Serv.setColumns(10);
-		layConService.add(txt_Disp_Serv);
-		
-		JLabel lblServicioId = new JLabel("Servicio ID");
-		lblServicioId.setBounds(249, 34, 80, 14);
-		lblServicioId.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		layConService.add(lblServicioId);
-		
-		txt_IdServicio = new JTextField();
-		txt_IdServicio.setBounds(336, 30, 45, 20);
-		txt_IdServicio.setColumns(10);
-		layConService.add(txt_IdServicio);
-		
-		JLabel lblDescripcionDelServicio = new JLabel("Descripcion del servicio");
-		lblDescripcionDelServicio.setBounds(249, 76, 189, 14);
-		lblDescripcionDelServicio.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		layConService.add(lblDescripcionDelServicio);
-		
-		JPanel panel_DescriptService = new JPanel();
-		panel_DescriptService.setBounds(249, 101, 317, 116);
-		layConService.add(panel_DescriptService);
-		
-		JButton btn_Aceptar = new JButton("Aceptar");
-		btn_Aceptar.setBounds(255, 253, 154, 44);
+		JButton btn_Aceptar = new JButton("Contratar");
+		btn_Aceptar.setBounds(126, 276, 154, 44);
+		btn_Aceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int fila = table.getSelectedRow();
+				String disp = (String) table.getValueAt(fila, 5);;
+				if(textcicn.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Por favor, ingrese su cedula");
+				}
+				else if(disp.equals("no")){
+					JOptionPane.showMessageDialog(null, "Proveedor no disponible");
+				}
+				else {
+					int C_I = Integer.parseInt(textcicn.getText());
+					String id_se = (String) table.getValueAt(fila, 0);
+					String cip = (String) table.getValueAt(fila, 1);
+					int C_Ip = Integer.parseInt(cip);
+					String pre = (String) table.getValueAt(fila, 2);
+					int precio = Integer.parseInt(pre);
+					String hora = (String) table.getValueAt(fila, 3);
+					int horaf = Integer.parseInt(hora);
+					String zona = (String) table.getValueAt(fila, 4);
+					String fecha = LocalDate.now().toString();
+					String estado = "en curso";
+					LocalTime hora_in = LocalTime.of(horap,minutop,segundop);
+					LocalTime hora_fin = hora_in.plusHours(horaf);
+					String hora_ini = hora_in.toString();
+					String hora_f = hora_fin.toString();
+					Negocio.insertarcontrata(C_I,id_se,fecha,hora,C_Ip,precio);
+					Negocio.modificarhace(id_se,C_Ip,precio,hora,zona,disp);
+					Negocio.insertarhorario(hora_ini,hora_f,estado);
+					
+					comboBox.setSelectedIndex(0);
+					DefaultTableModel model = Negocio.Mostrardatoshace1();
+					table.setModel(model);
+				}
+				
+				
+			}
+		});
 		layConService.add(btn_Aceptar);
 		
-		JButton btn_Denegar = new JButton("Denegar");
-		btn_Denegar.setBounds(431, 253, 154, 44);
+		JButton btn_Denegar = new JButton("Volver");
+		btn_Denegar.setBounds(346, 276, 154, 44);
+		btn_Denegar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				INICIO inicio = new INICIO();
+				inicio.setVisible(true);
+				dispose();
+			}
+		});
 		layConService.add(btn_Denegar);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 88, 619, 98);
+		layConService.add(scrollPane);
+		
+		table = new JTable();
+		table.setBounds(10, 44, 281, 218);
+		scrollPane.setViewportView(table);
+		
+		DefaultTableModel model = Negocio.Mostrardatoshace1();
+		table.setModel(model);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(10, 39, 317, 44);
+		layConService.add(scrollPane_1);
+		
+		table_1 = new JTable();
+		scrollPane_1.setViewportView(table_1);
+		table_1.setBounds(312, 83, 317, 116);
+		
+		DefaultTableModel modeldesc = Negocio.Mostrardatosdesc1();
+		table_1.setModel(modeldesc);
+		
+		JLabel C_I_cn = new JLabel("Su C.I");
+		C_I_cn.setBounds(36, 197, 63, 14);
+		layConService.add(C_I_cn);
+		
+		textcicn = new JTextPane();
+		textcicn.setBounds(36, 223, 154, 20);
+		layConService.add(textcicn);
+		
+		
 		
 	}
 }

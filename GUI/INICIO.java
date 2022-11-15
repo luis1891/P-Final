@@ -93,7 +93,6 @@ public class INICIO extends JFrame {
 		private JTextField txt_pass_Regi_CLI;
 		private JTextField txt_ubi_Regi_CLI;
 		private JTextField txt_ci_Regi_CLi;
-		private JTextField txt_disp_Prov;
 		private JTextField txt_ci_Prov;
 		private JTextField txt_cont_Prov;
 		private JTextField txt_name_Prov;
@@ -243,12 +242,9 @@ public class INICIO extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int C_I = Integer.parseInt(txt_INI_Prov.getText());
 				String clave =String.valueOf(txt_pass_INI_Prov.getPassword());
-				String nombre_C=null;
-				String ubicacion=null;
 				String nombrec=null;
 				int contact=0;
-				String disp=null;
-				Negocio.loginpro(C_I, nombrec, clave, contact, disp);
+				Negocio.loginpro(C_I, nombrec, clave, contact);
 				boolean lc = Negocio.loginproveedor();
 				if(lc == true) {
 					SERVICIO servicio = new SERVICIO();
@@ -410,54 +406,44 @@ public class INICIO extends JFrame {
 		lay_Proveedor.setLayout(null);
 		
 		JLabel nameProv = new JLabel("Nombre completo");
-		nameProv.setBounds(75, 14, 108, 14);
+		nameProv.setBounds(74, 30, 108, 14);
 		nameProv.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		lay_Proveedor.add(nameProv);
 		
 		txt_name_Prov = new JTextField();
-		txt_name_Prov.setBounds(188, 11, 176, 20);
+		txt_name_Prov.setBounds(187, 27, 176, 20);
 		txt_name_Prov.setColumns(10);
 		lay_Proveedor.add(txt_name_Prov);
 		
 		JLabel passProv = new JLabel("Contraseña");
-		passProv.setBounds(75, 39, 108, 14);
+		passProv.setBounds(74, 55, 108, 14);
 		passProv.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		lay_Proveedor.add(passProv);
 		
 		txt_pass_Prov = new JTextField();
-		txt_pass_Prov.setBounds(188, 36, 176, 20);
+		txt_pass_Prov.setBounds(187, 52, 176, 20);
 		txt_pass_Prov.setColumns(10);
 		lay_Proveedor.add(txt_pass_Prov);
 		
 		JLabel ciProv = new JLabel("C.I");
-		ciProv.setBounds(75, 64, 108, 14);
+		ciProv.setBounds(74, 80, 108, 14);
 		ciProv.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		lay_Proveedor.add(ciProv);
 		
 		txt_ci_Prov = new JTextField();
-		txt_ci_Prov.setBounds(188, 61, 176, 20);
+		txt_ci_Prov.setBounds(187, 77, 176, 20);
 		txt_ci_Prov.setColumns(10);
 		lay_Proveedor.add(txt_ci_Prov);
 		
 		JLabel contact_Prov = new JLabel("Contacto");
-		contact_Prov.setBounds(75, 89, 108, 14);
+		contact_Prov.setBounds(74, 105, 108, 14);
 		contact_Prov.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		lay_Proveedor.add(contact_Prov);
 		
 		txt_cont_Prov = new JTextField();
-		txt_cont_Prov.setBounds(188, 86, 176, 20);
+		txt_cont_Prov.setBounds(187, 102, 176, 20);
 		txt_cont_Prov.setColumns(10);
 		lay_Proveedor.add(txt_cont_Prov);
-		
-		JLabel disp_Prov = new JLabel("Disponibilidad");
-		disp_Prov.setBounds(75, 114, 108, 14);
-		disp_Prov.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		lay_Proveedor.add(disp_Prov);
-		
-		txt_disp_Prov = new JTextField();
-		txt_disp_Prov.setBounds(188, 111, 176, 20);
-		txt_disp_Prov.setColumns(10);
-		lay_Proveedor.add(txt_disp_Prov);
 		
 		JButton btnAddProv = new JButton("AÑADIR PROVEEDOR");
 		btnAddProv.setBounds(146, 149, 145, 23);
@@ -476,23 +462,18 @@ public class INICIO extends JFrame {
 					else if(txt_cont_Prov.getText().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
 					}
-					else if(txt_disp_Prov.getText().isEmpty()) {
-						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
-					}
 					else {
 				String nombre_C = txt_name_Prov.getText();
 				String clave = txt_pass_Prov.getText();
 				int C_I = Integer.parseInt(txt_ci_Prov.getText());
 				int contacto = Integer.parseInt(txt_cont_Prov.getText());
-				String disponibilidad = txt_disp_Prov.getText();
 				
-				Negocio.insertarproveedor(C_I, nombre_C, clave, contacto, disponibilidad);
+				Negocio.insertarproveedor(C_I, nombre_C, clave, contacto);
 				
 				txt_name_Prov.setText(null);
 				txt_pass_Prov.setText(null);
 				txt_ci_Prov.setText(null);
 				txt_cont_Prov.setText(null);
-				txt_disp_Prov.setText(null);
 			}
 				}
 					catch (Exception ex) {

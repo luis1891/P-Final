@@ -14,19 +14,18 @@ public class Proveedor {
 	
 	private PreparedStatement ps;
 	private final Conexion CN;
-	private final String SQL = "INSERT INTO proveedor (ci2,nombre_c,contraseña_p,contacto,disponibilidad) values(?,?,?,?,?)";
-	private String disponibilidad = null, nombre_C = null;
+	private final String SQL = "INSERT INTO proveedor (ci2,nombre_c,contraseña_p,contacto) values(?,?,?,?)";
+	private String nombre_C = null;
 	private static String contra = null; 
 	private static int C_I = 0;
 	private int contacto = 0;
 	
-	public Proveedor(int CI, String nombrec, String clave, int contact, String disp){
+	public Proveedor(int CI, String nombrec, String clave, int contact){
 		  
 		this.C_I = CI;
 		this.nombre_C = nombrec;
 		this.contra = clave;
 		this.contacto = contact;
-		this.disponibilidad = disp;
 	    CN = new Conexion();
 	  }
 	
@@ -37,7 +36,6 @@ public class Proveedor {
 				ps.setString(2, nombre_C);
 				ps.setString(3, contra);
 				ps.setInt(4, contacto);
-				ps.setString(5, disponibilidad);
 				int r = ps.executeUpdate();
 				if (r > 0) {
 					JOptionPane.showMessageDialog(null, "Guardado correctamente");

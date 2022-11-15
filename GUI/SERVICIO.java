@@ -35,12 +35,12 @@ public class SERVICIO extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField txt_id_Service;
-	private JTextField txt_name_Serv;
 	private JTextField txt_Hora_Serv;
 	private JTextField txt_price_Serv;
 	private JTextField txt_loc_Serv;
 	private JTextField txt_ci_Serv;
 	private JComboBox escojerServicio;
+	private JTextField txt_name_Serv;
 
 	/**
 	 * Launch the application.
@@ -85,6 +85,7 @@ public class SERVICIO extends JFrame{
 		
 		txt_id_Service = new JTextField();
 		txt_id_Service.setText("1");
+		txt_id_Service.setEditable(false);
 		txt_id_Service.setBounds(20, 75, 72, 20);
 		txt_id_Service.setColumns(10);
 		txt_id_Service.setBackground(new Color(255, 255, 255));
@@ -96,25 +97,25 @@ public class SERVICIO extends JFrame{
 				String opcion = (String)escojerServicio.getSelectedItem();
 				if(opcion.equals("Servicio 1")) {
 					txt_id_Service.setText("1");
-					txt_name_Serv.setText("Prueba");
+					txt_name_Serv.setText("Herreria");
 				}
 				else if(opcion.equals("Servicio 2")) {
 					txt_id_Service.setText("2");
-					txt_name_Serv.setText("Prueba2");
+					txt_name_Serv.setText("Carpinteria");
 				}
 				else if(opcion.equals("Servicio 3")) {
 					txt_id_Service.setText("3");
-					txt_name_Serv.setText("Prueba3");
+					txt_name_Serv.setText("Albañileria");
 				}
 				else if(opcion.equals("Servicio 4")) {
 					txt_id_Service.setText("4");
-					txt_name_Serv.setText("Prueba4");
+					txt_name_Serv.setText("Limpieza");
 				}
 			}
 		});
 		escojerServicio.setMaximumRowCount(4);
 		escojerServicio.setModel(new DefaultComboBoxModel(new String[] {"Servicio 1", "Servicio 2", "Servicio 3", "Servicio 4"}));
-		escojerServicio.setBounds(20, 20, 72, 22);
+		escojerServicio.setBounds(20, 20, 101, 22);
 		layeredPane.add(escojerServicio);
 			
 		
@@ -122,12 +123,6 @@ public class SERVICIO extends JFrame{
 		lblNombreDelServicio.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
 		lblNombreDelServicio.setBounds(20, 106, 129, 14);
 		layeredPane.add(lblNombreDelServicio);
-		
-		txt_name_Serv = new JTextField();
-		txt_name_Serv.setText("Prueba");
-		txt_name_Serv.setBounds(20, 123, 185, 20);
-		layeredPane.add(txt_name_Serv);
-		txt_name_Serv.setColumns(10);
 		
 		JLabel lblHorario = new JLabel("Horario");
 		lblHorario.setHorizontalAlignment(SwingConstants.CENTER);
@@ -168,8 +163,9 @@ public class SERVICIO extends JFrame{
 				int pre = Integer.parseInt(txt_price_Serv.getText());
 				String hora = txt_Hora_Serv.getText();
 				String zo = txt_loc_Serv.getText();
+				String dispo = "si";
 				
-				Negocio.insertarhace(idse, C_I, pre, hora, zo);
+				Negocio.insertarhace(idse, C_I, pre, hora, zo,dispo);
 				
 				txt_ci_Serv.setText(null);
 				txt_price_Serv.setText(null);
@@ -234,5 +230,13 @@ public class SERVICIO extends JFrame{
 		txt_ci_Serv.setBackground(Color.WHITE);
 		txt_ci_Serv.setBounds(128, 75, 133, 20);
 		layeredPane.add(txt_ci_Serv);
+		
+		txt_name_Serv = new JTextField();
+		txt_name_Serv.setText("Herreria");
+		txt_name_Serv.setEditable(false);
+		txt_name_Serv.setColumns(10);
+		txt_name_Serv.setBackground(Color.WHITE);
+		txt_name_Serv.setBounds(20, 123, 185, 20);
+		layeredPane.add(txt_name_Serv);
 	}
 }
