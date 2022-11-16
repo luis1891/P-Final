@@ -71,7 +71,7 @@ public class CON_SERV extends JFrame {
 		int minutop = calendar.get(Calendar.MINUTE);
 		int segundop = calendar.get(Calendar.MINUTE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 686, 410);
+		setBounds(100, 100, 686, 438);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -79,7 +79,7 @@ public class CON_SERV extends JFrame {
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 11, 644, 438);
+		tabbedPane.setBounds(10, 11, 644, 373);
 		contentPane.add(tabbedPane);
 		
 		JLayeredPane layConService = new JLayeredPane();
@@ -89,25 +89,25 @@ public class CON_SERV extends JFrame {
 		comboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				String opcion = (String)comboBox.getSelectedItem();
-				if(opcion.equals("Servicio 1")) {
+				if(opcion.equals("Herrería")) {
 					DefaultTableModel model = Negocio.Mostrardatoshace1();
 					table.setModel(model);
 					DefaultTableModel modeldesc = Negocio.Mostrardatosdesc1();
 					table_1.setModel(modeldesc);
 				}
-				else if(opcion.equals("Servicio 2")) {
+				else if(opcion.equals("Carpintería")) {
 					DefaultTableModel model = Negocio.Mostrardatoshace2();
 					table.setModel(model);
 					DefaultTableModel modeldesc = Negocio.Mostrardatosdesc2();
 					table_1.setModel(modeldesc);
 				}
-				else if(opcion.equals("Servicio 3")) {
+				else if(opcion.equals("Albañilería")) {
 					DefaultTableModel model = Negocio.Mostrardatoshace3();
 					table.setModel(model);
 					DefaultTableModel modeldesc = Negocio.Mostrardatosdesc3();
 					table_1.setModel(modeldesc);
 				}
-				else if(opcion.equals("Servicio 4")) {
+				else if(opcion.equals("Limpieza")) {
 					DefaultTableModel model = Negocio.Mostrardatoshace4();
 					table.setModel(model);
 					DefaultTableModel modeldesc = Negocio.Mostrardatosdesc4();
@@ -116,7 +116,7 @@ public class CON_SERV extends JFrame {
 			}
 		});
 		comboBox.setBounds(10, 11, 105, 22);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Servicio 1", "Servicio 2", "Servicio 3", "Servicio 4"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Herrería", "Carpintería", "Albañilería", "Limpieza"}));
 		layConService.add(comboBox);
 		
 		JButton btn_Aceptar = new JButton("Contratar");
@@ -155,22 +155,20 @@ public class CON_SERV extends JFrame {
 					DefaultTableModel model = Negocio.Mostrardatoshace1();
 					table.setModel(model);
 				}
-				
-				
 			}
 		});
 		layConService.add(btn_Aceptar);
 		
-		JButton btn_Denegar = new JButton("Volver");
-		btn_Denegar.setBounds(346, 276, 154, 44);
-		btn_Denegar.addActionListener(new ActionListener() {
+		JButton btn_Volver = new JButton("Volver");
+		btn_Volver.setBounds(346, 276, 154, 44);
+		btn_Volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				INICIO inicio = new INICIO();
 				inicio.setVisible(true);
 				dispose();
 			}
 		});
-		layConService.add(btn_Denegar);
+		layConService.add(btn_Volver);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 88, 619, 98);
@@ -201,8 +199,5 @@ public class CON_SERV extends JFrame {
 		textcicn = new JTextPane();
 		textcicn.setBounds(36, 223, 154, 20);
 		layConService.add(textcicn);
-		
-		
-		
 	}
 }

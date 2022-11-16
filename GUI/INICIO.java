@@ -69,8 +69,6 @@ public class INICIO extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -86,7 +84,6 @@ public class INICIO extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-
 		private JTextField textField;
 		private JPasswordField pass_INI;
 		private JTextField ci_INI;
@@ -102,7 +99,7 @@ public class INICIO extends JFrame {
 		private JTextField txt_INI_Prov;
 		
 	public INICIO() {
-		setBounds(100, 100, 480, 355);
+		setBounds(100, 100, 494, 365);
 		getContentPane().setLayout(null);
 		JTabbedPane panel_Inicio = new JTabbedPane(JTabbedPane.TOP);
 		panel_Inicio.setEnabled(false);
@@ -503,3 +500,4 @@ public class INICIO extends JFrame {
 		lay_Proveedor.add(btnVolverProv);
 	}
 }
+

@@ -32,7 +32,6 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
 public class SERVICIO extends JFrame{
-
 	private JPanel contentPane;
 	private JTextField txt_id_Service;
 	private JTextField txt_Hora_Serv;
@@ -63,7 +62,7 @@ public class SERVICIO extends JFrame{
 	 */
 	public SERVICIO() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 435, 399);
+		setBounds(100, 100, 435, 412);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -71,7 +70,7 @@ public class SERVICIO extends JFrame{
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 10, 400, 447);
+		tabbedPane.setBounds(10, 10, 400, 350);
 		contentPane.add(tabbedPane);
 		
 		JLayeredPane layeredPane = new JLayeredPane();
@@ -95,26 +94,26 @@ public class SERVICIO extends JFrame{
 		escojerServicio.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				String opcion = (String)escojerServicio.getSelectedItem();
-				if(opcion.equals("Servicio 1")) {
+				if(opcion.equals("Herreria")) {
 					txt_id_Service.setText("1");
 					txt_name_Serv.setText("Herreria");
 				}
-				else if(opcion.equals("Servicio 2")) {
+				else if(opcion.equals("Carpinteria")) {
 					txt_id_Service.setText("2");
 					txt_name_Serv.setText("Carpinteria");
 				}
-				else if(opcion.equals("Servicio 3")) {
+				else if(opcion.equals("Albañileria")) {
 					txt_id_Service.setText("3");
 					txt_name_Serv.setText("Albañileria");
 				}
-				else if(opcion.equals("Servicio 4")) {
+				else if(opcion.equals("Limpieza")) {
 					txt_id_Service.setText("4");
 					txt_name_Serv.setText("Limpieza");
 				}
 			}
 		});
 		escojerServicio.setMaximumRowCount(4);
-		escojerServicio.setModel(new DefaultComboBoxModel(new String[] {"Servicio 1", "Servicio 2", "Servicio 3", "Servicio 4"}));
+		escojerServicio.setModel(new DefaultComboBoxModel(new String[] {"Herrería", "Carpintería", "Albañilería", "Limpieza"}));
 		escojerServicio.setBounds(20, 20, 101, 22);
 		layeredPane.add(escojerServicio);
 			
@@ -171,7 +170,6 @@ public class SERVICIO extends JFrame{
 				txt_price_Serv.setText(null);
 				txt_Hora_Serv.setText(null);
 				txt_loc_Serv.setText(null);
-				
 			}
 				}
 					catch (Exception ex) {
@@ -180,7 +178,7 @@ public class SERVICIO extends JFrame{
 			}
 		});
 		btn_pub_Serv.setForeground(Color.BLACK);
-		btn_pub_Serv.setBackground(Color.DARK_GRAY);
+		btn_pub_Serv.setBackground(new Color(255, 255, 255));
 		btn_pub_Serv.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btn_pub_Serv.setBounds(20, 262, 113, 31);
 		layeredPane.add(btn_pub_Serv);
@@ -194,7 +192,7 @@ public class SERVICIO extends JFrame{
 			}
 		});
 		btn_volver.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btn_volver.setBackground(Color.DARK_GRAY);
+		btn_volver.setBackground(new Color(255, 255, 255));
 		btn_volver.setBounds(203, 262, 113, 31);
 		layeredPane.add(btn_volver);
 		
