@@ -61,6 +61,7 @@ import java.awt.Insets;
 ######################
 */
 import Logica.Negocio;
+import java.awt.SystemColor;
 
 public class INICIO extends JFrame {
 	
@@ -120,6 +121,7 @@ public class INICIO extends JFrame {
 		tabbedPane.addTab("Opciones", null, lay_Opciones, null);
 		
 		JButton btn_OP_INI = new JButton("INICIAR SESION");
+		btn_OP_INI.setBackground(Color.WHITE);
 		btn_OP_INI.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btn_OP_INI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -130,6 +132,7 @@ public class INICIO extends JFrame {
 		lay_Opciones.add(btn_OP_INI);
 		
 		JButton btn_OP_Cli = new JButton("REGISTRO CLIENTE");
+		btn_OP_Cli.setBackground(Color.WHITE);
 		btn_OP_Cli.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btn_OP_Cli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -140,6 +143,7 @@ public class INICIO extends JFrame {
 		lay_Opciones.add(btn_OP_Cli);
 		
 		JButton btn_OP_Prov = new JButton("REGISTRO PROVEEDOR");
+		btn_OP_Prov.setBackground(Color.WHITE);
 		btn_OP_Prov.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btn_OP_Prov.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -163,7 +167,7 @@ public class INICIO extends JFrame {
 		JButton btnINI_CLI = new JButton("INICIAR SESION");
 		btnINI_CLI.setForeground(new Color(0, 0, 0));
 		btnINI_CLI.setBounds(119, 74, 162, 23);
-		btnINI_CLI.setBackground(Color.DARK_GRAY);
+		btnINI_CLI.setBackground(Color.WHITE);
 		btnINI_CLI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int C_I = Integer.parseInt(ci_INI.getText());
@@ -213,9 +217,9 @@ public class INICIO extends JFrame {
 				panel_Inicio.setSelectedIndex(2);
 			}
 		});
-		btnINI_PROV.setBounds(88, 108, 225, 23);
+		btnINI_PROV.setBounds(78, 108, 247, 23);
 		btnINI_PROV.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnINI_PROV.setBackground(Color.DARK_GRAY);
+		btnINI_PROV.setBackground(Color.WHITE);
 		lay_INI.add(btnINI_PROV);
 		
 		JButton btnVolver_Cli = new JButton("Volver");
@@ -226,7 +230,7 @@ public class INICIO extends JFrame {
 			}
 		});
 		btnVolver_Cli.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnVolver_Cli.setBackground(Color.DARK_GRAY);
+		btnVolver_Cli.setBackground(Color.WHITE);
 		btnVolver_Cli.setBounds(119, 142, 162, 23);
 		lay_INI.add(btnVolver_Cli);
 		
@@ -255,7 +259,7 @@ public class INICIO extends JFrame {
 		});
 		btnINI_Prov.setForeground(new Color(0, 0, 0));
 		btnINI_Prov.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnINI_Prov.setBackground(Color.DARK_GRAY);
+		btnINI_Prov.setBackground(Color.WHITE);
 		btnINI_Prov.setBounds(120, 67, 162, 23);
 		lay_INI_Prov.add(btnINI_Prov);
 		
@@ -290,7 +294,7 @@ public class INICIO extends JFrame {
 			}
 		});
 		btnVolver_Prov.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnVolver_Prov.setBackground(Color.DARK_GRAY);
+		btnVolver_Prov.setBackground(Color.WHITE);
 		btnVolver_Prov.setBounds(120, 101, 162, 23);
 		lay_INI_Prov.add(btnVolver_Prov);
 		JTabbedPane panRegCli = new JTabbedPane(JTabbedPane.TOP);
@@ -340,6 +344,7 @@ public class INICIO extends JFrame {
 		layRegiCLI.add(txt_ci_Regi_CLi);
 		
 		JButton btnAddCLI = new JButton("AÑADIR CLIENTE");
+		btnAddCLI.setBackground(Color.WHITE);
 		btnAddCLI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -379,6 +384,7 @@ public class INICIO extends JFrame {
 		layRegiCLI.add(btnAddCLI);
 		
 		JButton btnVolverCli = new JButton("VOLVER");
+		btnVolverCli.setBackground(Color.WHITE);
 		btnVolverCli.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Inicio.setSelectedIndex(0);
@@ -446,6 +452,7 @@ public class INICIO extends JFrame {
 		lay_Proveedor.add(txt_cont_Prov);
 		
 		JButton btnAddProv = new JButton("AÑADIR PROVEEDOR");
+		btnAddProv.setBackground(Color.WHITE);
 		btnAddProv.setBounds(146, 149, 145, 23);
 		btnAddProv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -485,6 +492,7 @@ public class INICIO extends JFrame {
 		lay_Proveedor.add(btnAddProv);
 		
 		JButton btnVolverProv = new JButton("VOLVER");
+		btnVolverProv.setBackground(Color.WHITE);
 		btnVolverProv.setBounds(146, 177, 145, 23);
 		btnVolverProv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

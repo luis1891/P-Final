@@ -85,18 +85,6 @@ public class CON_SERV extends JFrame {
 		JLayeredPane layConService = new JLayeredPane();
 		tabbedPane.addTab("Opcion de servicios", null, layConService, null);
 		layConService.setLayout(null);
-		
-		/*
-		 ###############################################################
-		 #   														   #
-		 # La idea de la parte de abajo, es que cuando el usuario      #
-		 # elija otro servicio se carguen en el visual los datos       #
-		 # de proveedor como el de sus ID servicio nuevo y su 		   #
-		 # descripcion, en caso que no te guste la idea podes quitarlo #
-		 # sin drama 												   #
-		 #   														   #
-		 ###############################################################
-		*/
 		JComboBox comboBox = new JComboBox();
 		comboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
