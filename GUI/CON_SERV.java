@@ -131,6 +131,9 @@ public class CON_SERV extends JFrame {
 				else if(disp.equals("no")){
 					JOptionPane.showMessageDialog(null, "Proveedor no disponible");
 				}
+				else if(table.getValueAt(fila, 1).equals(textcicn.getText())){
+					JOptionPane.showMessageDialog(null, "No se puede contratar a si mismo");
+				}
 				else {
 					int C_I = Integer.parseInt(textcicn.getText());
 					String id_se = (String) table.getValueAt(fila, 0);
@@ -140,6 +143,8 @@ public class CON_SERV extends JFrame {
 					int precio = Integer.parseInt(pre);
 					String hora = (String) table.getValueAt(fila, 3);
 					int horaf = Integer.parseInt(hora);
+					int preciot = precio * horaf;
+					System.out.print(preciot);
 					String zona = (String) table.getValueAt(fila, 4);
 					String fecha = LocalDate.now().toString();
 					String estado = "en curso";
@@ -147,7 +152,8 @@ public class CON_SERV extends JFrame {
 					LocalTime hora_fin = hora_in.plusHours(horaf);
 					String hora_ini = hora_in.toString();
 					String hora_f = hora_fin.toString();
-					Negocio.insertarcontrata(C_I,id_se,fecha,hora,C_Ip,precio);
+					
+					Negocio.insertarcontrata(C_I,id_se,fecha,hora,C_Ip,preciot);
 					Negocio.modificarhace(id_se,C_Ip,precio,hora,zona,disp);
 					Negocio.insertarhorario(hora_ini,hora_f,estado);
 					

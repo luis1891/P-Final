@@ -267,8 +267,8 @@ public class Negocio {
 			DefaultTableModel model = new DefaultTableModel();
 			model.addColumn("ID_SE");
 			model.addColumn("CI");
-			model.addColumn("PRECIO");
-			model.addColumn("HORARIO");
+			model.addColumn("PRECIO/HORA");
+			model.addColumn("HORAS");
 			model.addColumn("ZONA");
 			model.addColumn("DISPONIBILIDAD");
 			try {
@@ -298,8 +298,8 @@ public class Negocio {
 			DefaultTableModel model = new DefaultTableModel();
 			model.addColumn("ID_SE");
 			model.addColumn("CI");
-			model.addColumn("PRECIO");
-			model.addColumn("HORARIO");
+			model.addColumn("PRECIO/HORA");
+			model.addColumn("HORAS");
 			model.addColumn("ZONA");
 			model.addColumn("DISPONIBILIDAD");
 			try {
@@ -329,8 +329,8 @@ public class Negocio {
 			DefaultTableModel model = new DefaultTableModel();
 			model.addColumn("ID_SE");
 			model.addColumn("CI");
-			model.addColumn("PRECIO");
-			model.addColumn("HORARIO");
+			model.addColumn("PRECIO/HORA");
+			model.addColumn("HORAS");
 			model.addColumn("ZONA");
 			model.addColumn("DISPONIBILIDAD");
 			try {
@@ -360,8 +360,8 @@ public class Negocio {
 			DefaultTableModel model = new DefaultTableModel();
 			model.addColumn("ID_SE");
 			model.addColumn("CI");
-			model.addColumn("PRECIO");
-			model.addColumn("HORARIO");
+			model.addColumn("PRECIO/HORA");
+			model.addColumn("HORAS");
 			model.addColumn("ZONA");
 			model.addColumn("DISPONIBILIDAD");
 			try {
@@ -391,8 +391,8 @@ public class Negocio {
 			DefaultTableModel model = new DefaultTableModel();
 			model.addColumn("ID_SE");
 			model.addColumn("CI");
-			model.addColumn("PRECIO");
-			model.addColumn("HORARIO");
+			model.addColumn("PRECIO/HORA");
+			model.addColumn("HORAS");
 			model.addColumn("ZONA");
 			model.addColumn("DISPONIBILIDAD");
 			try {
@@ -431,7 +431,7 @@ public class Negocio {
 			model.addColumn("CI");
 			model.addColumn("ID SERVICIO");
 			model.addColumn("FECHA CONTRATACIO");
-			model.addColumn("HORARIO");
+			model.addColumn("HORAS");
 			model.addColumn("CI PROVEEDOR");
 			model.addColumn("PRECIO");
 			try {

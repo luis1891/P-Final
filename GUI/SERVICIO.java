@@ -30,16 +30,18 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 public class SERVICIO extends JFrame{
 	private JPanel contentPane;
 	private JTextField txt_id_Service;
-	private JTextField txt_Hora_Serv;
 	private JTextField txt_price_Serv;
 	private JTextField txt_loc_Serv;
 	private JTextField txt_ci_Serv;
 	private JComboBox escojerServicio;
 	private JTextField txt_name_Serv;
+	private JSpinner hora_i;
 
 	/**
 	 * Launch the application.
@@ -123,17 +125,6 @@ public class SERVICIO extends JFrame{
 		lblNombreDelServicio.setBounds(20, 106, 129, 14);
 		layeredPane.add(lblNombreDelServicio);
 		
-		JLabel lblHorario = new JLabel("Horario");
-		lblHorario.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHorario.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		lblHorario.setBounds(20, 149, 52, 14);
-		layeredPane.add(lblHorario);
-		
-		txt_Hora_Serv = new JTextField();
-		txt_Hora_Serv.setColumns(10);
-		txt_Hora_Serv.setBounds(20, 168, 52, 20);
-		layeredPane.add(txt_Hora_Serv);
-		
 		JButton btn_pub_Serv = new JButton("Publicar");
 		btn_pub_Serv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -147,9 +138,6 @@ public class SERVICIO extends JFrame{
 					else if(txt_name_Serv.getText().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
 					}
-					else if(txt_Hora_Serv.getText().isEmpty()) {
-						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
-					}
 					else if(txt_price_Serv.getText().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Por favor, llene los campos obligatorios");
 					}
@@ -160,7 +148,7 @@ public class SERVICIO extends JFrame{
 				String idse = txt_id_Service.getText();
 				int C_I = Integer.parseInt(txt_ci_Serv.getText());
 				int pre = Integer.parseInt(txt_price_Serv.getText());
-				String hora = txt_Hora_Serv.getText();
+				String hora = hora_i.getValue().toString();
 				String zo = txt_loc_Serv.getText();
 				String dispo = "si";
 				
@@ -168,7 +156,6 @@ public class SERVICIO extends JFrame{
 				
 				txt_ci_Serv.setText(null);
 				txt_price_Serv.setText(null);
-				txt_Hora_Serv.setText(null);
 				txt_loc_Serv.setText(null);
 			}
 				}
@@ -196,16 +183,16 @@ public class SERVICIO extends JFrame{
 		btn_volver.setBounds(203, 262, 113, 31);
 		layeredPane.add(btn_volver);
 		
-		JLabel preServ = new JLabel("Precio");
+		JLabel preServ = new JLabel("Precio por hora");
 		preServ.setHorizontalAlignment(SwingConstants.CENTER);
 		preServ.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		preServ.setBounds(114, 149, 43, 14);
+		preServ.setBounds(153, 149, 121, 14);
 		layeredPane.add(preServ);
 		
 		txt_price_Serv = new JTextField();
 		txt_price_Serv.setToolTipText("");
 		txt_price_Serv.setColumns(10);
-		txt_price_Serv.setBounds(103, 168, 72, 20);
+		txt_price_Serv.setBounds(176, 168, 72, 20);
 		layeredPane.add(txt_price_Serv);
 		
 		JLabel lblLocalidad = new JLabel("Localidad");
@@ -236,5 +223,14 @@ public class SERVICIO extends JFrame{
 		txt_name_Serv.setBackground(Color.WHITE);
 		txt_name_Serv.setBounds(20, 123, 185, 20);
 		layeredPane.add(txt_name_Serv);
+		
+		hora_i = new JSpinner();
+		hora_i.setModel(new SpinnerNumberModel(1, 1, 8, 1));
+		hora_i.setBounds(49, 168, 43, 20);
+		layeredPane.add(hora_i);
+		
+		JLabel lblNewLabel = new JLabel("Cantidad de horas");
+		lblNewLabel.setBounds(20, 146, 121, 20);
+		layeredPane.add(lblNewLabel);
 	}
 }

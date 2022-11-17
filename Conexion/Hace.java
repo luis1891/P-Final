@@ -39,7 +39,7 @@ public class Hace {
 				JOptionPane.showMessageDialog(null, "Guardado correctamente");
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ingrese bien sus datos");
 		}
 		return 0;
 	}

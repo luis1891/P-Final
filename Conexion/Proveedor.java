@@ -68,7 +68,6 @@ public class Proveedor {
     		String SQL="";
     		Statement st=CN.getConnection().prepareStatement(SQL);
     		String mos = "SELECT * FROM proveedor WHERE ci2='"+C_I+"' and contraseña_p='"+contra+"'";
-    		System.out.print(mos);
     		rs=st.executeQuery(mos);
     	}catch (Exception e){
     		System.out.print(e);

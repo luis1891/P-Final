@@ -99,7 +99,7 @@ public class INICIO extends JFrame {
 		private JTextField txt_INI_Prov;
 		
 	public INICIO() {
-		setBounds(100, 100, 494, 365);
+		setBounds(100, 100, 482, 353);
 		getContentPane().setLayout(null);
 		JTabbedPane panel_Inicio = new JTabbedPane(JTabbedPane.TOP);
 		panel_Inicio.setEnabled(false);

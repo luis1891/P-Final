@@ -39,7 +39,7 @@ public class Persona {
 				JOptionPane.showMessageDialog(null, "Guardado correctamente");
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Ingrese bien sus datos");
 		}
 		return 0;
 	}
@@ -67,7 +67,6 @@ public class Persona {
     		String SQL="";
     		Statement st=CN.getConnection().prepareStatement(SQL);
     		String mos = "SELECT * FROM Persona WHERE ci='"+C_I+"' and contraseña='"+contra+"'";
-    		System.out.print(mos);
     		rs=st.executeQuery(mos);
     	}catch (Exception e){
     		System.out.print(e);
