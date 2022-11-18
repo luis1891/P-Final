@@ -9,7 +9,6 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 public class Persona {
-	  
 	private PreparedStatement ps;
 	private final Conexion CN;
 	private final String SQL = "INSERT INTO Persona (ci,Nom_completo,contraseña,ubicacion) values(?,?,?,?)";

@@ -77,7 +77,7 @@ public class Hace {
 	    	Conexion CN = new Conexion();
 	    	String SQL="";
 	    	Statement st=CN.getConnection().prepareStatement(SQL);
-	    	String mos = "SELECT * FROM hace WHERE id_se = '1'";
+	    	String mos = "SELECT hace.*, proveedor.contacto FROM hace,proveedor WHERE hace.ci3 = proveedor.ci2 and id_se = '1'";
 	    	rs=st.executeQuery(mos);
 	    }catch (Exception e){
 	    	System.out.print(e);
@@ -92,7 +92,7 @@ public class Hace {
 	    	Conexion CN = new Conexion();
 	    	String SQL="";
 	    	Statement st=CN.getConnection().prepareStatement(SQL);
-	    	String mos = "SELECT * FROM hace WHERE id_se = '2'";
+	    	String mos = "SELECT hace.*, proveedor.contacto FROM hace,proveedor WHERE hace.ci3 = proveedor.ci2 and id_se = '2'";
 	    	rs=st.executeQuery(mos);
 	    }catch (Exception e){
 	    		System.out.print(e);
@@ -107,7 +107,7 @@ public class Hace {
 	    	Conexion CN = new Conexion();
 	    	String SQL="";
 	    	Statement st=CN.getConnection().prepareStatement(SQL);
-	    	String mos = "SELECT * FROM hace WHERE id_se = '3'";
+	    	String mos = "SELECT hace.*, proveedor.contacto FROM hace,proveedor WHERE hace.ci3 = proveedor.ci2 and id_se = '3'";
 	    	rs=st.executeQuery(mos);	
 	    }catch (Exception e){
 	    	System.out.print(e);
@@ -122,7 +122,7 @@ public class Hace {
 	    	Conexion CN = new Conexion();
 	    	String SQL="";
 	    	Statement st=CN.getConnection().prepareStatement(SQL);
-	    	String mos = "SELECT * FROM hace WHERE id_se = '4'";
+	    	String mos = "SELECT hace.*, proveedor.contacto FROM hace,proveedor WHERE hace.ci3 = proveedor.ci2 and id_se = '4'";
 	    	rs=st.executeQuery(mos);
 	    }catch (Exception e){
 	    	System.out.print(e);

@@ -5,9 +5,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
-import Logica.Negocio;
-
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
@@ -37,6 +34,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
 import java.util.Calendar;
+import Logica.Negocio;
 
 public class CON_SERV extends JFrame {
 
@@ -71,7 +69,7 @@ public class CON_SERV extends JFrame {
 		int minutop = calendar.get(Calendar.MINUTE);
 		int segundop = calendar.get(Calendar.MINUTE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 686, 438);
+		setBounds(100, 100, 805, 438);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -79,7 +77,7 @@ public class CON_SERV extends JFrame {
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 11, 644, 373);
+		tabbedPane.setBounds(10, 11, 768, 373);
 		contentPane.add(tabbedPane);
 		
 		JLayeredPane layConService = new JLayeredPane();
@@ -89,25 +87,25 @@ public class CON_SERV extends JFrame {
 		comboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				String opcion = (String)comboBox.getSelectedItem();
-				if(opcion.equals("Herrería")) {
+				if(opcion.equals("Servicio 1")) {
 					DefaultTableModel model = Negocio.Mostrardatoshace1();
 					table.setModel(model);
 					DefaultTableModel modeldesc = Negocio.Mostrardatosdesc1();
 					table_1.setModel(modeldesc);
 				}
-				else if(opcion.equals("Carpintería")) {
+				else if(opcion.equals("Servicio 2")) {
 					DefaultTableModel model = Negocio.Mostrardatoshace2();
 					table.setModel(model);
 					DefaultTableModel modeldesc = Negocio.Mostrardatosdesc2();
 					table_1.setModel(modeldesc);
 				}
-				else if(opcion.equals("Albañilería")) {
+				else if(opcion.equals("Servicio 3")) {
 					DefaultTableModel model = Negocio.Mostrardatoshace3();
 					table.setModel(model);
 					DefaultTableModel modeldesc = Negocio.Mostrardatosdesc3();
 					table_1.setModel(modeldesc);
 				}
-				else if(opcion.equals("Limpieza")) {
+				else if(opcion.equals("Servicio 4")) {
 					DefaultTableModel model = Negocio.Mostrardatoshace4();
 					table.setModel(model);
 					DefaultTableModel modeldesc = Negocio.Mostrardatosdesc4();
@@ -116,11 +114,11 @@ public class CON_SERV extends JFrame {
 			}
 		});
 		comboBox.setBounds(10, 11, 105, 22);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Herrería", "Carpintería", "Albañilería", "Limpieza"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Servicio 1", "Servicio 2", "Servicio 3", "Servicio 4"}));
 		layConService.add(comboBox);
 		
 		JButton btn_Aceptar = new JButton("Contratar");
-		btn_Aceptar.setBounds(126, 276, 154, 44);
+		btn_Aceptar.setBounds(172, 276, 154, 44);
 		btn_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int fila = table.getSelectedRow();
@@ -166,7 +164,7 @@ public class CON_SERV extends JFrame {
 		layConService.add(btn_Aceptar);
 		
 		JButton btn_Volver = new JButton("Volver");
-		btn_Volver.setBounds(346, 276, 154, 44);
+		btn_Volver.setBounds(392, 276, 154, 44);
 		btn_Volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				INICIO inicio = new INICIO();
@@ -177,7 +175,8 @@ public class CON_SERV extends JFrame {
 		layConService.add(btn_Volver);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 88, 619, 98);
+		scrollPane.setEnabled(false);
+		scrollPane.setBounds(10, 100, 741, 98);
 		layConService.add(scrollPane);
 		
 		table = new JTable();
@@ -199,11 +198,11 @@ public class CON_SERV extends JFrame {
 		table_1.setModel(modeldesc);
 		
 		JLabel C_I_cn = new JLabel("Su C.I");
-		C_I_cn.setBounds(36, 197, 63, 14);
+		C_I_cn.setBounds(10, 209, 63, 14);
 		layConService.add(C_I_cn);
 		
 		textcicn = new JTextPane();
-		textcicn.setBounds(36, 223, 154, 20);
+		textcicn.setBounds(10, 235, 154, 20);
 		layConService.add(textcicn);
 	}
 }

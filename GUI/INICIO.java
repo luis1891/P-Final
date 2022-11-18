@@ -3,25 +3,19 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Window;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Window.Type;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-
-import Conexion.Conexion;
-
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import java.awt.Container;
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -39,7 +33,6 @@ import javax.swing.JTextPane;
 import java.awt.ScrollPane;
 import java.awt.Button;
 import javax.swing.JComboBox;
-
 import Logica.Negocio;
 import java.awt.Label;
 import java.awt.Font;
@@ -55,11 +48,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
-/*
-######################
-# Importe de negocio #
-######################
-*/
+import Conexion.Conexion;
 import Logica.Negocio;
 import java.awt.SystemColor;
 
@@ -67,7 +56,7 @@ public class INICIO extends JFrame {
 	
 	/**
 	 * Launch the application.
-	 */
+	*/
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -99,11 +88,11 @@ public class INICIO extends JFrame {
 		private JTextField txt_INI_Prov;
 		
 	public INICIO() {
-		setBounds(100, 100, 482, 353);
+		setBounds(100, 100, 506, 382);
 		getContentPane().setLayout(null);
 		JTabbedPane panel_Inicio = new JTabbedPane(JTabbedPane.TOP);
 		panel_Inicio.setEnabled(false);
-		panel_Inicio.setBounds(0, 0, 463, 314);
+		panel_Inicio.setBounds(12, 12, 462, 315);
 		getContentPane().add(panel_Inicio);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -125,7 +114,7 @@ public class INICIO extends JFrame {
 				panel_Inicio.setSelectedIndex(1);
 			}
 		});
-		btn_OP_INI.setBounds(152, 27, 154, 44);
+		btn_OP_INI.setBounds(152, 31, 169, 44);
 		lay_Opciones.add(btn_OP_INI);
 		
 		JButton btn_OP_Cli = new JButton("REGISTRO CLIENTE");
@@ -136,7 +125,7 @@ public class INICIO extends JFrame {
 				panel_Inicio.setSelectedIndex(3);
 			}
 		});
-		btn_OP_Cli.setBounds(152, 82, 154, 44);
+		btn_OP_Cli.setBounds(152, 90, 169, 44);
 		lay_Opciones.add(btn_OP_Cli);
 		
 		JButton btn_OP_Prov = new JButton("REGISTRO PROVEEDOR");
@@ -147,7 +136,7 @@ public class INICIO extends JFrame {
 				panel_Inicio.setSelectedIndex(4);
 			}
 		});
-		btn_OP_Prov.setBounds(152, 137, 154, 44);
+		btn_OP_Prov.setBounds(152, 149, 169, 44);
 		lay_Opciones.add(btn_OP_Prov);
 		
 		/*
@@ -185,6 +174,7 @@ public class INICIO extends JFrame {
 		lay_INI.add(btnINI_CLI);
 		
 		pass_INI = new JPasswordField();
+		pass_INI.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		pass_INI.setBounds(200, 36, 145, 20);
 		pass_INI.setBackground(Color.WHITE);
 		pass_INI.setToolTipText("");
@@ -192,6 +182,7 @@ public class INICIO extends JFrame {
 		lay_INI.add(pass_INI);
 		
 		ci_INI = new JTextField();
+		ci_INI.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		ci_INI.setBounds(200, 11, 145, 20);
 		ci_INI.setBackground(Color.WHITE);
 		ci_INI.setColumns(10);
@@ -214,7 +205,7 @@ public class INICIO extends JFrame {
 				panel_Inicio.setSelectedIndex(2);
 			}
 		});
-		btnINI_PROV.setBounds(78, 108, 247, 23);
+		btnINI_PROV.setBounds(77, 108, 247, 23);
 		btnINI_PROV.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnINI_PROV.setBackground(Color.WHITE);
 		lay_INI.add(btnINI_PROV);
@@ -261,6 +252,7 @@ public class INICIO extends JFrame {
 		lay_INI_Prov.add(btnINI_Prov);
 		
 		txt_pass_INI_Prov = new JPasswordField();
+		txt_pass_INI_Prov.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txt_pass_INI_Prov.setToolTipText("");
 		txt_pass_INI_Prov.setEchoChar('#');
 		txt_pass_INI_Prov.setBackground(Color.WHITE);
@@ -268,6 +260,7 @@ public class INICIO extends JFrame {
 		lay_INI_Prov.add(txt_pass_INI_Prov);
 		
 		txt_INI_Prov = new JTextField();
+		txt_INI_Prov.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txt_INI_Prov.setColumns(10);
 		txt_INI_Prov.setBackground(Color.WHITE);
 		txt_INI_Prov.setBounds(200, 11, 145, 20);
@@ -302,42 +295,46 @@ public class INICIO extends JFrame {
 		
 		JLabel nameRegis = new JLabel("Nombre completo");
 		nameRegis.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		nameRegis.setBounds(78, 9, 113, 14);
+		nameRegis.setBounds(74, 34, 113, 14);
 		layRegiCLI.add(nameRegis);
 		
 		JLabel passRegis = new JLabel("Contraseña");
 		passRegis.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		passRegis.setBounds(78, 33, 90, 14);
+		passRegis.setBounds(74, 58, 90, 14);
 		layRegiCLI.add(passRegis);
 		
 		JLabel ubiRegis = new JLabel("Ubicacion");
 		ubiRegis.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		ubiRegis.setBounds(78, 83, 75, 20);
+		ubiRegis.setBounds(74, 108, 75, 20);
 		layRegiCLI.add(ubiRegis);
 		
 		txt_name_Regi_CLI = new JTextField();
+		txt_name_Regi_CLI.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txt_name_Regi_CLI.setColumns(10);
-		txt_name_Regi_CLI.setBounds(200, 5, 176, 20);
+		txt_name_Regi_CLI.setBounds(196, 30, 176, 20);
 		layRegiCLI.add(txt_name_Regi_CLI);
 		
 		txt_pass_Regi_CLI = new JTextField();
+		txt_pass_Regi_CLI.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txt_pass_Regi_CLI.setColumns(10);
-		txt_pass_Regi_CLI.setBounds(200, 30, 176, 20);
+		txt_pass_Regi_CLI.setBounds(196, 55, 176, 20);
 		layRegiCLI.add(txt_pass_Regi_CLI);
 		
 		txt_ubi_Regi_CLI = new JTextField();
+		txt_ubi_Regi_CLI.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txt_ubi_Regi_CLI.setColumns(10);
-		txt_ubi_Regi_CLI.setBounds(200, 80, 176, 20);
+		txt_ubi_Regi_CLI.setBounds(196, 105, 176, 20);
 		layRegiCLI.add(txt_ubi_Regi_CLI);
 		
 		JLabel ciRegi = new JLabel("C.I");
 		ciRegi.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		ciRegi.setBounds(78, 58, 52, 14);
+		ciRegi.setBounds(74, 83, 52, 14);
 		layRegiCLI.add(ciRegi);
 		
 		txt_ci_Regi_CLi = new JTextField();
+		txt_ci_Regi_CLi.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txt_ci_Regi_CLi.setColumns(10);
-		txt_ci_Regi_CLi.setBounds(200, 55, 176, 20);
+		txt_ci_Regi_CLi.setBounds(196, 80, 176, 20);
 		layRegiCLI.add(txt_ci_Regi_CLi);
 		
 		JButton btnAddCLI = new JButton("AÑADIR CLIENTE");
@@ -377,7 +374,7 @@ public class INICIO extends JFrame {
 			}
 		});
 		btnAddCLI.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnAddCLI.setBounds(144, 114, 139, 23);
+		btnAddCLI.setBounds(140, 139, 139, 23);
 		layRegiCLI.add(btnAddCLI);
 		
 		JButton btnVolverCli = new JButton("VOLVER");
@@ -392,7 +389,7 @@ public class INICIO extends JFrame {
 			}
 		});
 		btnVolverCli.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnVolverCli.setBounds(144, 142, 139, 23);
+		btnVolverCli.setBounds(140, 167, 139, 23);
 		layRegiCLI.add(btnVolverCli);
 		
 		/*
@@ -414,6 +411,7 @@ public class INICIO extends JFrame {
 		lay_Proveedor.add(nameProv);
 		
 		txt_name_Prov = new JTextField();
+		txt_name_Prov.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txt_name_Prov.setBounds(187, 27, 176, 20);
 		txt_name_Prov.setColumns(10);
 		lay_Proveedor.add(txt_name_Prov);
@@ -424,6 +422,7 @@ public class INICIO extends JFrame {
 		lay_Proveedor.add(passProv);
 		
 		txt_pass_Prov = new JTextField();
+		txt_pass_Prov.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txt_pass_Prov.setBounds(187, 52, 176, 20);
 		txt_pass_Prov.setColumns(10);
 		lay_Proveedor.add(txt_pass_Prov);
@@ -434,6 +433,7 @@ public class INICIO extends JFrame {
 		lay_Proveedor.add(ciProv);
 		
 		txt_ci_Prov = new JTextField();
+		txt_ci_Prov.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txt_ci_Prov.setBounds(187, 77, 176, 20);
 		txt_ci_Prov.setColumns(10);
 		lay_Proveedor.add(txt_ci_Prov);
@@ -444,13 +444,14 @@ public class INICIO extends JFrame {
 		lay_Proveedor.add(contact_Prov);
 		
 		txt_cont_Prov = new JTextField();
+		txt_cont_Prov.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txt_cont_Prov.setBounds(187, 102, 176, 20);
 		txt_cont_Prov.setColumns(10);
 		lay_Proveedor.add(txt_cont_Prov);
 		
 		JButton btnAddProv = new JButton("AÑADIR PROVEEDOR");
 		btnAddProv.setBackground(Color.WHITE);
-		btnAddProv.setBounds(146, 149, 145, 23);
+		btnAddProv.setBounds(146, 149, 156, 23);
 		btnAddProv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -490,7 +491,7 @@ public class INICIO extends JFrame {
 		
 		JButton btnVolverProv = new JButton("VOLVER");
 		btnVolverProv.setBackground(Color.WHITE);
-		btnVolverProv.setBounds(146, 177, 145, 23);
+		btnVolverProv.setBounds(146, 177, 156, 23);
 		btnVolverProv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel_Inicio.setSelectedIndex(0);
@@ -500,4 +501,3 @@ public class INICIO extends JFrame {
 		lay_Proveedor.add(btnVolverProv);
 	}
 }
-

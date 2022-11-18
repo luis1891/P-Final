@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +27,7 @@ public class Proveedor {
 	}
 	
 	public int insertar() {
+
 		try {
 			ps = CN.getConnection().prepareStatement(SQL);
 			ps.setInt(1, C_I);

@@ -1,13 +1,9 @@
 package GUI;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import Logica.Negocio;
-
 import javax.swing.JToolBar;
 import javax.swing.JTextArea;
 import javax.swing.JSeparator;
@@ -18,7 +14,6 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JTextPane;
@@ -32,6 +27,8 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+
+import Logica.Negocio;
 
 public class SERVICIO extends JFrame{
 	private JPanel contentPane;
@@ -85,6 +82,8 @@ public class SERVICIO extends JFrame{
 		layeredPane.add(idService);
 		
 		txt_id_Service = new JTextField();
+		txt_id_Service.setHorizontalAlignment(SwingConstants.CENTER);
+		txt_id_Service.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		txt_id_Service.setText("1");
 		txt_id_Service.setEditable(false);
 		txt_id_Service.setBounds(20, 75, 72, 20);
@@ -93,29 +92,30 @@ public class SERVICIO extends JFrame{
 		layeredPane.add(txt_id_Service);
 		
 		escojerServicio = new JComboBox();
+		escojerServicio.setFont(new Font("Bookman Old Style", Font.BOLD, 13));
 		escojerServicio.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				String opcion = (String)escojerServicio.getSelectedItem();
-				if(opcion.equals("Herreria")) {
+				if(opcion.equals("Servicio 1")) {
 					txt_id_Service.setText("1");
 					txt_name_Serv.setText("Herreria");
 				}
-				else if(opcion.equals("Carpinteria")) {
+				else if(opcion.equals("Servicio 2")) {
 					txt_id_Service.setText("2");
 					txt_name_Serv.setText("Carpinteria");
 				}
-				else if(opcion.equals("Albañileria")) {
+				else if(opcion.equals("Servicio 3")) {
 					txt_id_Service.setText("3");
 					txt_name_Serv.setText("Albañileria");
 				}
-				else if(opcion.equals("Limpieza")) {
+				else if(opcion.equals("Servicio 4")) {
 					txt_id_Service.setText("4");
 					txt_name_Serv.setText("Limpieza");
 				}
 			}
 		});
 		escojerServicio.setMaximumRowCount(4);
-		escojerServicio.setModel(new DefaultComboBoxModel(new String[] {"Herrería", "Carpintería", "Albañilería", "Limpieza"}));
+		escojerServicio.setModel(new DefaultComboBoxModel(new String[] {"Servicio 1", "Servicio 2", "Servicio 3", "Servicio 4"}));
 		escojerServicio.setBounds(20, 20, 101, 22);
 		layeredPane.add(escojerServicio);
 			
@@ -190,6 +190,7 @@ public class SERVICIO extends JFrame{
 		layeredPane.add(preServ);
 		
 		txt_price_Serv = new JTextField();
+		txt_price_Serv.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txt_price_Serv.setToolTipText("");
 		txt_price_Serv.setColumns(10);
 		txt_price_Serv.setBounds(176, 168, 72, 20);
@@ -201,6 +202,7 @@ public class SERVICIO extends JFrame{
 		layeredPane.add(lblLocalidad);
 		
 		txt_loc_Serv = new JTextField();
+		txt_loc_Serv.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txt_loc_Serv.setColumns(10);
 		txt_loc_Serv.setBounds(20, 213, 185, 20);
 		layeredPane.add(txt_loc_Serv);
@@ -211,22 +213,25 @@ public class SERVICIO extends JFrame{
 		layeredPane.add(ciService);
 		
 		txt_ci_Serv = new JTextField();
+		txt_ci_Serv.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txt_ci_Serv.setColumns(10);
 		txt_ci_Serv.setBackground(Color.WHITE);
 		txt_ci_Serv.setBounds(128, 75, 133, 20);
 		layeredPane.add(txt_ci_Serv);
 		
 		txt_name_Serv = new JTextField();
+		txt_name_Serv.setFont(new Font("Bookman Old Style", Font.BOLD, 13));
 		txt_name_Serv.setText("Herreria");
 		txt_name_Serv.setEditable(false);
 		txt_name_Serv.setColumns(10);
 		txt_name_Serv.setBackground(Color.WHITE);
-		txt_name_Serv.setBounds(20, 123, 185, 20);
+		txt_name_Serv.setBounds(20, 123, 113, 20);
 		layeredPane.add(txt_name_Serv);
 		
 		hora_i = new JSpinner();
+		hora_i.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		hora_i.setModel(new SpinnerNumberModel(1, 1, 8, 1));
-		hora_i.setBounds(49, 168, 43, 20);
+		hora_i.setBounds(42, 168, 50, 20);
 		layeredPane.add(hora_i);
 		
 		JLabel lblNewLabel = new JLabel("Cantidad de horas");

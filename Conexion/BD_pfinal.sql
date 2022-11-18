@@ -1,4 +1,4 @@
-DROP DATABASE Registro;
+/*DROP DATABASE Registro;*/
 CREATE DATABASE Registro;
 USE Registro;
 
