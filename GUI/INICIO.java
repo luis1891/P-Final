@@ -156,6 +156,11 @@ public class INICIO extends JFrame {
 		btnINI_CLI.setBackground(Color.WHITE);
 		btnINI_CLI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//pasa ci a la clase con_serv
+				String ci_L = ci_INI.getText();
+				CON_SERV serpro = new CON_SERV();
+				serpro.ci_login(ci_L);
+				//////
 				int C_I = Integer.parseInt(ci_INI.getText());
 				String clave =String.valueOf(pass_INI.getPassword());
 				String nombre_C=null;
@@ -163,7 +168,6 @@ public class INICIO extends JFrame {
 				Negocio.logincli(nombre_C, C_I, clave, ubicacion);
 				boolean lc = Negocio.logincliente();
 				if(lc == true) {
-					CON_SERV serpro = new CON_SERV();
 					serpro.setVisible(true);
 					dispose();
 				}
@@ -232,6 +236,11 @@ public class INICIO extends JFrame {
 		JButton btnINI_Prov = new JButton("INICIAR SESION");
 		btnINI_Prov.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//pasa ci a la clase con_serv
+				String ci_L = txt_INI_Prov.getText();
+				SERVICIO servicio = new SERVICIO();
+				servicio.ci_login(ci_L);
+				//////
 				int C_I = Integer.parseInt(txt_INI_Prov.getText());
 				String clave =String.valueOf(txt_pass_INI_Prov.getPassword());
 				String nombrec=null;
@@ -239,7 +248,6 @@ public class INICIO extends JFrame {
 				Negocio.loginpro(C_I, nombrec, clave, contact);
 				boolean lc = Negocio.loginproveedor();
 				if(lc == true) {
-					SERVICIO servicio = new SERVICIO();
 					servicio.setVisible(true);
 					dispose();
 				}

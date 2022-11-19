@@ -202,7 +202,13 @@ public class CON_SERV extends JFrame {
 		layConService.add(C_I_cn);
 		
 		textcicn = new JTextPane();
+		textcicn.setEditable(false);
 		textcicn.setBounds(10, 235, 154, 20);
 		layConService.add(textcicn);
+	}
+	
+	//guarda la ci y la utiliza automaticamente
+	public void ci_login(String ci_l) {
+		textcicn.setText(ci_l);
 	}
 }

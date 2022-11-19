@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Conexion.Servicio;
+
 import javax.swing.JToolBar;
 import javax.swing.JTextArea;
 import javax.swing.JSeparator;
@@ -35,10 +38,11 @@ public class SERVICIO extends JFrame{
 	private JTextField txt_id_Service;
 	private JTextField txt_price_Serv;
 	private JTextField txt_loc_Serv;
-	private JTextField txt_ci_Serv;
+	private static JTextField txt_ci_Serv;
 	private JComboBox escojerServicio;
 	private JTextField txt_name_Serv;
 	private JSpinner hora_i;
+	private String CIL;
 
 	/**
 	 * Launch the application.
@@ -153,8 +157,6 @@ public class SERVICIO extends JFrame{
 				String dispo = "si";
 				
 				Negocio.insertarhace(idse, C_I, pre, hora, zo,dispo);
-				
-				txt_ci_Serv.setText(null);
 				txt_price_Serv.setText(null);
 				txt_loc_Serv.setText(null);
 			}
@@ -207,12 +209,13 @@ public class SERVICIO extends JFrame{
 		txt_loc_Serv.setBounds(20, 213, 185, 20);
 		layeredPane.add(txt_loc_Serv);
 		
-		JLabel ciService = new JLabel("C.I Proveedor");
+		JLabel ciService = new JLabel("C.I");
 		ciService.setFont(new Font("Baskerville Old Face", Font.BOLD, 13));
-		ciService.setBounds(128, 58, 101, 14);
+		ciService.setBounds(128, 58, 37, 14);
 		layeredPane.add(ciService);
 		
 		txt_ci_Serv = new JTextField();
+		txt_ci_Serv.setEditable(false);
 		txt_ci_Serv.setFont(new Font("Tahoma", Font.BOLD, 13));
 		txt_ci_Serv.setColumns(10);
 		txt_ci_Serv.setBackground(Color.WHITE);
@@ -237,5 +240,12 @@ public class SERVICIO extends JFrame{
 		JLabel lblNewLabel = new JLabel("Cantidad de horas");
 		lblNewLabel.setBounds(20, 146, 121, 20);
 		layeredPane.add(lblNewLabel);
+		
+		
+	}
+	
+	//guarda la ci y la utiliza automaticamente
+	public void ci_login(String ci_l) {
+		txt_ci_Serv.setText(ci_l);
 	}
 }
